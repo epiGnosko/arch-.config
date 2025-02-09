@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<map>
+  <int name="lastUpdateCheck" value="1737677302" />
+  <int name="mouseMode" value="1" />
+  <int name="penType" value="11" />
+  <int name="singleTouchMode" value="1" />
+  <int name="strokeCounter" value="384" />
+  <float name="pageHeight" value="1654" />
+  <float name="pageWidth" value="1024" />
+  <string name="currFolder" value="/home/gurmukh/Study/Notes/" />
+  <string name="docFileExt" value="svgz" />
+  <string name="newDocTitleFmt" value="%b %e %Hh%M" />
+  <string name="recentDocs" value="/home/gurmukh/Study/Notes/Jan 24 00h09.svgz:::/home/gurmukh/AOC2024/day1/Scribble.svgz:::/home/gurmukh/AOC2024/day1/Dec 10 22h51.svgz" />
+  <string name="savedColors" value="#FF000000,#FFFF0000,#FF008000,#FF0000FF" />
+  <string name="savedWidths" value="1.400,2.400,4.000,8.000" />
+  <string name="toolBars2" value="docTitle,stretch,actionSave,separator,tools,separator,undoRedoBtn,separator,seltools,separator,actionShow_Bookmarks,actionShow_Clippings,actionSplitView,separator,actionOverflow_Menu" />
+  <string name="toolModes" value="15 18 27 22" />
+  <string name="windowState" value="14 57 2020 1209 0 0" />
+  <pen color="4278190080" width="1.60000002" wRatio="0.899999976" pressure="2" speed="0" direction="0" dash="0" gap="0" flags="272" />
+  <pen color="4278190335" width="1.60000002" wRatio="0.899999976" pressure="2" speed="0" direction="0" dash="0" gap="0" flags="272" />
+  <pen color="4278222592" width="1.60000002" wRatio="0.899999976" pressure="2" speed="0" direction="0" dash="0" gap="0" flags="272" />
+  <pen color="4294901760" width="1.60000002" wRatio="0.899999976" pressure="2" speed="0" direction="0" dash="0" gap="0" flags="272" />
+  <pen color="4278190080" width="3" wRatio="0.800000012" pressure="2" speed="0" direction="45" dash="0" gap="0" flags="336" />
+  <pen color="4278190080" width="1.79999995" wRatio="0.699999988" pressure="0" speed="0.5" direction="0" dash="0" gap="0" flags="288" />
+  <pen color="4278190080" width="4" wRatio="0" pressure="0" speed="0" direction="0" dash="0" gap="0" flags="512" />
+  <pen color="2147450879" width="34" wRatio="0" pressure="0" speed="0" direction="0" dash="0" gap="0" flags="1025" />
+</map>

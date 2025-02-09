@@ -1,0 +1,132 @@
+10:02:27.476: Platform: Wayland
+10:02:27.476: CPU Name: Intel(R) Core(TM) Ultra 5 125H
+10:02:27.476: CPU Speed: 2823.480MHz
+10:02:27.477: Physical Cores: 14, Logical Cores: 18
+10:02:27.477: Physical Memory: 15594MB Total, 10297MB Free
+10:02:27.477: Kernel Version: Linux 6.12.1-arch1-1
+10:02:27.477: Distribution: "Arch Linux" Unknown
+10:02:27.477: Desktop Environment: GNOME (gnome)
+10:02:27.477: Session Type: wayland
+10:02:27.478: Qt Version: 6.8.1 (runtime), 6.8.0 (compiled)
+10:02:27.478: Portable mode: false
+10:02:27.514: OBS 30.2.3-1 (linux)
+10:02:27.514: ---------------------------------
+10:02:27.514: ---------------------------------
+10:02:27.514: audio settings reset:
+10:02:27.514: 	samples per sec: 48000
+10:02:27.514: 	speakers:        2
+10:02:27.514: 	max buffering:   960 milliseconds
+10:02:27.514: 	buffering type:  dynamically increasing
+10:02:27.522: ---------------------------------
+10:02:27.522: Initializing OpenGL...
+10:02:27.522: Using EGL/Wayland
+10:02:27.547: Initialized EGL 1.5
+10:02:27.557: Loading up OpenGL on adapter Intel Mesa Intel(R) Arc(tm) Graphics (MTL)
+10:02:27.557: OpenGL loaded successfully, version 4.6 (Core Profile) Mesa 24.3.1-arch1.1, shading language 4.60
+10:02:27.666: ---------------------------------
+10:02:27.666: video settings reset:
+10:02:27.666: 	base resolution:   1920x1080
+10:02:27.666: 	output resolution: 1280x720
+10:02:27.666: 	downscale filter:  Bicubic
+10:02:27.666: 	fps:               30/1
+10:02:27.666: 	format:            NV12
+10:02:27.666: 	YUV mode:          Rec. 709/Partial
+10:02:27.666: NV12 texture support enabled
+10:02:27.666: P010 texture support not available
+10:02:27.671: Audio monitoring device:
+10:02:27.671: 	name: Default
+10:02:27.671: 	id: default
+10:02:27.671: ---------------------------------
+10:02:27.679: Failed to load 'en-US' text for module: 'decklink-captions.so'
+10:02:27.688: Failed to load 'en-US' text for module: 'decklink-output-ui.so'
+10:02:27.695: A DeckLink iterator could not be created.  The DeckLink drivers may not be installed
+10:02:27.695: Failed to initialize module 'decklink.so'
+10:02:27.822: [pipewire] Available capture sources:
+10:02:27.822: [pipewire]     - Monitor source
+10:02:27.822: [pipewire]     - Window source
+10:02:27.841: v4l2loopback not installed, virtual camera not registered
+10:02:27.899: VAAPI: API version 1.22
+10:02:27.900: FFmpeg VAAPI H264 encoding supported
+10:02:27.903: FFmpeg VAAPI AV1 encoding supported
+10:02:27.906: FFmpeg VAAPI HEVC encoding supported
+10:02:28.006: ---------------------------------
+10:02:28.006:   Loaded Modules:
+10:02:28.006:     text-freetype2.so
+10:02:28.006:     rtmp-services.so
+10:02:28.006:     obs-x264.so
+10:02:28.006:     obs-webrtc.so
+10:02:28.006:     obs-vst.so
+10:02:28.006:     obs-transitions.so
+10:02:28.006:     obs-qsv11.so
+10:02:28.006:     obs-outputs.so
+10:02:28.006:     obs-libfdk.so
+10:02:28.006:     obs-filters.so
+10:02:28.006:     obs-ffmpeg.so
+10:02:28.006:     linux-v4l2.so
+10:02:28.006:     linux-pulseaudio.so
+10:02:28.006:     linux-pipewire.so
+10:02:28.006:     linux-jack.so
+10:02:28.006:     linux-capture.so
+10:02:28.006:     linux-alsa.so
+10:02:28.006:     image-source.so
+10:02:28.006:     frontend-tools.so
+10:02:28.006:     decklink-output-ui.so
+10:02:28.006:     decklink-captions.so
+10:02:28.006: ---------------------------------
+10:02:28.006: ---------------------------------
+10:02:28.006: Available Encoders:
+10:02:28.006:   Video Encoders:
+10:02:28.006: 	- ffmpeg_svt_av1 (SVT-AV1)
+10:02:28.006: 	- ffmpeg_aom_av1 (AOM AV1)
+10:02:28.006: 	- ffmpeg_vaapi_tex (FFmpeg VAAPI H.264)
+10:02:28.006: 	- av1_ffmpeg_vaapi_tex (FFmpeg VAAPI AV1)
+10:02:28.006: 	- hevc_ffmpeg_vaapi_tex (FFmpeg VAAPI HEVC)
+10:02:28.006: 	- obs_qsv11_v2 (QuickSync H.264)
+10:02:28.006: 	- obs_qsv11_av1 (QuickSync AV1)
+10:02:28.006: 	- obs_qsv11_hevc (QuickSync HEVC)
+10:02:28.006: 	- obs_x264 (x264)
+10:02:28.006:   Audio Encoders:
+10:02:28.006: 	- ffmpeg_aac (FFmpeg AAC)
+10:02:28.006: 	- ffmpeg_opus (FFmpeg Opus)
+10:02:28.006: 	- ffmpeg_pcm_s16le (FFmpeg PCM (16-bit))
+10:02:28.006: 	- ffmpeg_pcm_s24le (FFmpeg PCM (24-bit))
+10:02:28.006: 	- ffmpeg_pcm_f32le (FFmpeg PCM (32-bit float))
+10:02:28.006: 	- ffmpeg_alac (FFmpeg ALAC (24-bit))
+10:02:28.006: 	- ffmpeg_flac (FFmpeg FLAC (16-bit))
+10:02:28.006: 	- libfdk_aac (libfdk AAC)
+10:02:28.006: ==== Startup complete ===============================================
+10:02:28.009: No scene file found, creating default scene
+10:02:28.051: All scene data cleared
+10:02:28.051: ------------------------------------------------
+10:02:28.065: pulse-input: Server name: 'PulseAudio (on PipeWire 1.2.7) 15.0.0'
+10:02:28.065: pulse-input: Audio format: s32le, 48000 Hz, 2 channels
+10:02:28.065: pulse-input: Started recording from 'alsa_output.pci-0000_00_1f.3.analog-stereo.monitor' (default)
+10:02:28.065: pulse-input: Server name: 'PulseAudio (on PipeWire 1.2.7) 15.0.0'
+10:02:28.066: pulse-input: Audio format: s32le, 48000 Hz, 2 channels
+10:02:28.066: pulse-input: Started recording from 'alsa_input.pci-0000_00_1f.3.analog-stereo' (default)
+10:02:28.066: Switched to scene 'Scene'
+10:02:28.066: Failed to glob scene collections
+10:02:28.667: adding 21 milliseconds of audio buffering, total audio buffering is now 21 milliseconds (source: Desktop Audio)
+10:02:28.667: 
+10:02:29.597: [rtmp-services plugin] Successfully updated file 'services.json' (version 264)
+10:02:29.597: [rtmp-services plugin] Successfully updated package (version 264)
+10:02:51.148: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5ee010c949e0
+10:02:58.790: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5ee015445d80
+10:03:04.474: 
+10:03:04.474: ==== Auto-config wizard testing commencing ======
+
+10:03:12.804: Number of remaining views: 1
+10:03:12.804: ---------------------------------
+10:03:12.804: video settings reset:
+10:03:12.804: 	base resolution:   2048x1280
+10:03:12.804: 	output resolution: 1724x1080
+10:03:12.804: 	downscale filter:  Bicubic
+10:03:12.804: 	fps:               60/1
+10:03:12.804: 	format:            NV12
+10:03:12.804: 	YUV mode:          Rec. 709/Partial
+10:03:12.805: NV12 texture support enabled
+10:03:12.805: P010 texture support not available
+10:03:12.812: 
+10:03:12.812: ==== Auto-config wizard testing stopping ========
+
+10:03:12.815: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5ee01560c3a0

@@ -1,0 +1,8 @@
+2024-10-22T04:13:26.536Z 0: 
+
+----------------------------------------------
+2024-10-22T04:13:26.539Z 1: Discord starting: {"releaseChannel":"stable","version":"0.0.71"}, modulepath: /home/gurmukh/.config/discord/0.0.71/modules
+2024-10-22T04:13:26.541Z 2: ✅ webContents.created web1 ""
+2024-10-22T04:13:26.542Z 3: ✅ window.created win1 "discord"
+2024-10-22T04:13:26.781Z 4: ✅ webContents.did-finish-load web1
+2024-10-22T04:13:35.165Z 5: before-quit

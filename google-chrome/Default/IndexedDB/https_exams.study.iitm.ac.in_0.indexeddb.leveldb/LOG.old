@@ -1,0 +1,20 @@
+2024/10/20-09:30:53.885 1f229 Creating DB /home/gurmukh/.config/google-chrome/Default/IndexedDB/https_exams.study.iitm.ac.in_0.indexeddb.leveldb since it was missing.
+2024/10/20-09:30:53.887 1f229 Reusing MANIFEST /home/gurmukh/.config/google-chrome/Default/IndexedDB/https_exams.study.iitm.ac.in_0.indexeddb.leveldb/MANIFEST-000001
+2024/10/20-09:30:53.891 1f22a Level-0 table #5: started
+2024/10/20-09:30:53.892 1f22a Level-0 table #5: 686 bytes OK
+2024/10/20-09:30:53.893 1f22a Delete type=0 #3
+2024/10/20-09:30:53.893 1f22a Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/10/20-09:30:55.815 1f236 Level-0 table #7: started
+2024/10/20-09:30:55.816 1f236 Level-0 table #7: 1458 bytes OK
+2024/10/20-09:30:55.817 1f236 Delete type=0 #4
+2024/10/20-09:30:55.817 1f22a Manual compaction at level-0 from '\x00\x03\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x04\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/10/20-09:43:00.241 1f229 Level-0 table #9: started
+2024/10/20-09:43:00.242 1f229 Level-0 table #9: 4838 bytes OK
+2024/10/20-09:43:00.243 1f229 Delete type=0 #6
+2024/10/20-09:43:00.243 1f229 Manual compaction at level-0 from '\x00\x05\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x06\x00\x00\x00' @ 0 : 0; will stop at '\x00\x05\x00\x00\x05' @ 165 : 1
+2024/10/20-09:43:00.243 1f229 Compacting 1@0 + 1@1 files
+2024/10/20-09:43:00.244 1f229 Generated table #10@0: 77 keys, 1675 bytes
+2024/10/20-09:43:00.244 1f229 Compacted 1@0 + 1@1 files => 1675 bytes
+2024/10/20-09:43:00.244 1f229 compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/10/20-09:43:00.244 1f229 Delete type=2 #9
+2024/10/20-09:43:00.245 1f229 Manual compaction at level-0 from '\x00\x05\x00\x00\x05' @ 165 : 1 .. '\x00\x06\x00\x00\x00' @ 0 : 0; will stop at (end)

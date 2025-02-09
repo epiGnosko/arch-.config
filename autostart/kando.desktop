@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Kando
+Comment=The Cross-Platform Pie Menu
+GenericName=Pie Menu
+Exec=kando %U
+Icon=kando
+Type=Application
+StartupNotify=true
+Categories=Utility;
+

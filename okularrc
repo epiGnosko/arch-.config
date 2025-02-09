@@ -1,0 +1,18 @@
+[Desktop Entry]
+FullScreen=true
+shouldShowMenuBarComingFromFullScreen=true
+shouldShowToolBarComingFromFullScreen=true
+
+[General]
+LockSidebar=true
+ShowSidebar=true
+
+[MainWindow]
+MenuBar=Disabled
+ToolBarsMovable=Disabled
+
+[Recent Files]
+File1[$e]=$HOME/Downloads/Telegram Desktop/Ambigram phone.tif
+File2[$e]=$HOME/Developer/AOC/AOC2015/day6/output1.txt
+Name1[$e]=Ambigram phone.tif
+Name2[$e]=output1.txt

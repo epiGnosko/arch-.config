@@ -1,0 +1,8 @@
+audio.equalizer.low_mid_peak_gain_v2=223696213
+audio.equalizer.low_peak_gain_v2=626349397
+audio.equalizer_v2=true
+connect.dial_devices="[]"
+audio.play_bitrate_non_metered_migrated=true
+connect.mdns_devices="[]"
+ui.hide_hpto=true
+audio.equalizer.low_shelf_gain_v2=760567125
