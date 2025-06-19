@@ -1,0 +1,8 @@
+# dataset used: https://learnopencv.s3.us-west-2.amazonaws.com/pothole_dataset.zip
+
+from ultralytics import YOLO
+
+model = YOLO("yolov8s.pt")  # load a pretrained model (recommended for training)
+
+results = model.train(data='pothole.yaml', imgsz=640, epochs=300, batch=8, name="custom")
+

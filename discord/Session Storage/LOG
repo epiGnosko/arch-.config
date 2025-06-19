@@ -1,2 +1,3 @@
-2024/10/22-09:43:35.170 ffa Creating DB /home/gurmukh/.config/discord/Session Storage since it was missing.
-2024/10/22-09:43:35.173 ffa Reusing MANIFEST /home/gurmukh/.config/discord/Session Storage/MANIFEST-000001
+2025/05/15-11:53:11.817 5f58 Reusing MANIFEST /home/gurmukh/.config/discord/Session Storage/MANIFEST-000001
+2025/05/15-11:53:11.817 5f58 Recovering log #3
+2025/05/15-11:53:11.818 5f58 Reusing old log /home/gurmukh/.config/discord/Session Storage/000003.log 

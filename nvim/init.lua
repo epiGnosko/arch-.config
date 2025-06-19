@@ -36,23 +36,23 @@ vim.schedule(function()
   require "mappings"
 end)
 
+os.execute("python ~/.config/nvim/pywal/chadwal.py &> /dev/null &")
+
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd("Signal", {
+  pattern = "SIGUSR1",
+  callback = function()
+    require('nvchad.utils').reload()
+  end
+})
+
 if vim.g.neovide then
-  vim.o.guifont = "CaskaydiaCove Nerd Font:h14"
-  vim.opt.linespace = -2
-  vim.g.neovide_transparency = 0.5
+  vim.o.guifont = "CaskaydiaCove Nerd Font:h11"
+  vim.o.linespace = -2
   vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_refresh_rate = 120
-  vim.g.neovide_idle_refresh_rate = 1
-  vim.g.neovide_cursor_vfx_mode = "railgun"
+  vim.g.neovide_refresh_rate_idle = 1
+  vim.g.neovide_cursor_smooth_blink = true
+  vim.g.neovide_cursor_vfk_mode = "pixiedust"
 end
-
--- os.execute("python ~/.config/nvim/pywal/chadwal.py &> /dev/null &")
---
--- local autocmd = vim.api.nvim_create_autocmd
---
--- autocmd("Signal", {
---   pattern = "SIGUSR1",
---   callback = function()
---     require('nvchad.utils').reload()
---   end
--- })

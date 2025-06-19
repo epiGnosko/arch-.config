@@ -1,0 +1,20 @@
+{
+  "settings_version": "0.0.6",
+  "datasets_dir": "/home/gurmukh/Developer/PotholeDetection/datasets",
+  "weights_dir": "weights",
+  "runs_dir": "runs",
+  "uuid": "13b4c427eaf8e948fc29f5665ae2d09714d5568c778cc52b8186a7b6a44066f8",
+  "sync": true,
+  "api_key": "",
+  "openai_api_key": "",
+  "clearml": true,
+  "comet": true,
+  "dvc": true,
+  "hub": true,
+  "mlflow": true,
+  "neptune": true,
+  "raytune": true,
+  "tensorboard": true,
+  "wandb": false,
+  "vscode_msg": true
+}

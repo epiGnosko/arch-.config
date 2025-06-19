@@ -1,2 +1,16 @@
-2024/10/22-09:43:26.451 ffa Creating DB /home/gurmukh/.config/discord/Local Storage/leveldb since it was missing.
-2024/10/22-09:43:26.458 ffa Reusing MANIFEST /home/gurmukh/.config/discord/Local Storage/leveldb/MANIFEST-000001
+2025/05/15-11:52:57.247 5f58 Reusing MANIFEST /home/gurmukh/.config/discord/Local Storage/leveldb/MANIFEST-000001
+2025/05/15-11:52:57.255 5f58 Recovering log #15
+2025/05/15-11:52:57.256 5f58 Reusing old log /home/gurmukh/.config/discord/Local Storage/leveldb/000015.log 
+2025/05/15-11:56:38.555 5f58 Level-0 table #19: started
+2025/05/15-11:56:38.578 5f58 Level-0 table #19: 1047426 bytes OK
+2025/05/15-11:56:38.580 5f58 Delete type=0 #15
+2025/05/15-11:56:38.582 5f58 Compacting 4@0 + 1@1 files
+2025/05/15-11:56:38.622 5f58 Generated table #20@0: 8 keys, 2514639 bytes
+2025/05/15-11:56:38.642 5f58 Generated table #21@0: 48 keys, 1027117 bytes
+2025/05/15-11:56:38.642 5f58 Compacted 4@0 + 1@1 files => 3541756 bytes
+2025/05/15-11:56:38.643 5f58 compacted to: files[ 0 2 1 0 0 0 0 ]
+2025/05/15-11:56:38.644 5f58 Delete type=2 #16
+2025/05/15-11:56:38.644 5f58 Delete type=2 #19
+2025/05/15-11:56:38.644 5f58 Delete type=2 #7
+2025/05/15-11:56:38.644 5f58 Delete type=2 #10
+2025/05/15-11:56:38.644 5f58 Delete type=2 #13

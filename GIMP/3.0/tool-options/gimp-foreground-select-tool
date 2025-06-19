@@ -1,0 +1,6 @@
+# GIMP gimp-foreground-select-tool options
+
+(foreground
+    (color "R'G'B'A double" 32 "\0\0\0\0\0\0\360\77\0\0\0\0\0\0\360\77\0\0\0\0\0\0\360\77\0\0\0\0\0\0\360\77" 0))
+
+# end of gimp-foreground-select-tool options

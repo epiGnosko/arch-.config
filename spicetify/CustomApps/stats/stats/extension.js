@@ -5477,10 +5477,10 @@ var stats = (() => {
   });
 
   // src/extensions/extension.tsx
-  var import_react15 = __toESM(require_react());
+  var import_react17 = __toESM(require_react());
 
   // src/pages/playlist.tsx
-  var import_react12 = __toESM(require_react());
+  var import_react14 = __toESM(require_react());
 
   // src/components/cards/stat_card.tsx
   var import_react = __toESM(require_react());
@@ -5589,6 +5589,9 @@ var stats = (() => {
     const deleteCollection = () => {
       CollectionsWrapper.deleteCollection(id);
     };
+    const deleteCollectionAndAlbums = () => {
+      CollectionsWrapper.deleteCollectionAndAlbums(id);
+    };
     const renameCollection = () => {
       const name = CollectionsWrapper.getCollection(id)?.name;
       const rename = (newName) => {
@@ -5638,7 +5641,12 @@ var stats = (() => {
         path: deleteIconPath
       }),
       onClick: deleteCollection
-    }, "Delete"), synced ? /* @__PURE__ */ import_react5.default.createElement(MenuItem, {
+    }, "Delete (Only Collection)"), /* @__PURE__ */ import_react5.default.createElement(MenuItem, {
+      leadingIcon: /* @__PURE__ */ import_react5.default.createElement(leading_icon_default, {
+        path: deleteIconPath
+      }),
+      onClick: deleteCollectionAndAlbums
+    }, "Delete (Collection and Albums)"), synced ? /* @__PURE__ */ import_react5.default.createElement(MenuItem, {
       leadingIcon: /* @__PURE__ */ import_react5.default.createElement(leading_icon_default, {
         path: deleteIconPath
       }),
@@ -5664,48 +5672,14 @@ var stats = (() => {
 
   // ../library/src/components/folder_menu.tsx
   var import_react6 = __toESM(require_react());
-
-  // ../library/src/extensions/folder_image_wrapper.ts
-  var _FolderImageWrapper = class extends EventTarget {
-    _folderImages;
-    constructor() {
-      super();
-      this._folderImages = JSON.parse(localStorage.getItem("library:folderImages") || "{}");
-    }
-    getFolderImage(uri) {
-      return this._folderImages[uri];
-    }
-    getFolderImages() {
-      return this._folderImages;
-    }
-    setFolderImage({ uri, url }) {
-      this._folderImages[uri] = url;
-      this.saveFolderImages();
-      Spicetify.showNotification("Folder image updated");
-    }
-    removeFolderImage(uri) {
-      delete this._folderImages[uri];
-      this.saveFolderImages();
-      Spicetify.showNotification("Folder image removed");
-    }
-    saveFolderImages() {
-      this.dispatchEvent(new CustomEvent("update", { detail: this._folderImages }));
-      localStorage.setItem("library:folderImages", JSON.stringify(this._folderImages));
-    }
-  };
-  var FolderImageWrapper = _FolderImageWrapper;
-  __publicField(FolderImageWrapper, "INSTANCE", new _FolderImageWrapper());
-  var folder_image_wrapper_default = FolderImageWrapper.INSTANCE;
-
-  // ../library/src/components/folder_menu.tsx
   var editIconPath2 = '<path d="M11.838.714a2.438 2.438 0 0 1 3.448 3.448l-9.841 9.841c-.358.358-.79.633-1.267.806l-3.173 1.146a.75.75 0 0 1-.96-.96l1.146-3.173c.173-.476.448-.909.806-1.267l9.84-9.84zm2.387 1.06a.938.938 0 0 0-1.327 0l-9.84 9.842a1.953 1.953 0 0 0-.456.716L2 14.002l1.669-.604a1.95 1.95 0 0 0 .716-.455l9.841-9.841a.938.938 0 0 0 0-1.327z"></path>';
   var deleteIconPath2 = '<path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"></path><path d="M12 8.75H4v-1.5h8v1.5z"></path>';
   var FolderMenu = ({ uri }) => {
     const { MenuItem, Menu } = Spicetify.ReactComponent;
-    const image = folder_image_wrapper_default.getFolderImage(uri);
+    const image = FolderImageWrapper.getFolderImage(uri);
     const setImage = () => {
       const setNewImage = (newUrl) => {
-        folder_image_wrapper_default.setFolderImage({ uri, url: newUrl });
+        FolderImageWrapper.setFolderImage({ uri, url: newUrl });
       };
       Spicetify.PopupModal.display({
         title: "Set Folder Image",
@@ -5717,7 +5691,7 @@ var stats = (() => {
       });
     };
     const removeImage = () => {
-      folder_image_wrapper_default.removeFolderImage(uri);
+      FolderImageWrapper.removeFolderImage(uri);
     };
     return /* @__PURE__ */ import_react6.default.createElement(Menu, null, /* @__PURE__ */ import_react6.default.createElement(MenuItem, {
       leadingIcon: /* @__PURE__ */ import_react6.default.createElement(leading_icon_default, {
@@ -5734,7 +5708,7 @@ var stats = (() => {
   var folder_menu_default = FolderMenu;
 
   // ../shared/components/spotify_card.tsx
-  var import_react8 = __toESM(require_react());
+  var import_react10 = __toESM(require_react());
 
   // ../shared/components/folder_fallback.tsx
   var import_react7 = __toESM(require_react());
@@ -5751,42 +5725,63 @@ var stats = (() => {
   };
   var folder_fallback_default = FolderSVG;
 
+  // ../library/src/components/nav_context.tsx
+  var import_react8 = __toESM(require_react());
+  var NavigationContext = import_react8.default.createContext(null);
+  var useNavigation = () => {
+    const ctx = import_react8.default.useContext(NavigationContext);
+    return ctx;
+  };
+
+  // ../library/src/components/local_album_menu.tsx
+  var import_react9 = __toESM(require_react());
+  var LocalAlbumMenu = ({ id }) => {
+    const { Menu, MenuItem } = Spicetify.ReactComponent;
+    return /* @__PURE__ */ import_react9.default.createElement(Menu, null);
+  };
+  var local_album_menu_default = LocalAlbumMenu;
+
   // ../shared/components/spotify_card.tsx
   function SpotifyCard(props) {
     const { Cards, TextComponent, ArtistMenu, AlbumMenu, PodcastShowMenu, PlaylistMenu, ContextMenu } = Spicetify.ReactComponent;
     const { FeatureCard: Card, CardImage } = Cards;
-    const { createHref, push } = Spicetify.Platform.History;
+    const { History } = Spicetify.Platform;
+    const { navigate } = useNavigation() ?? {};
     const { type, header, uri, imageUrl, subheader, artistUri, badge, provider } = props;
     const Menu = () => {
       switch (type) {
         case "artist":
-          return /* @__PURE__ */ import_react8.default.createElement(ArtistMenu, {
+          return /* @__PURE__ */ import_react10.default.createElement(ArtistMenu, {
             uri
           });
         case "album":
-          return /* @__PURE__ */ import_react8.default.createElement(AlbumMenu, {
+          return /* @__PURE__ */ import_react10.default.createElement(AlbumMenu, {
             uri,
             artistUri,
             canRemove: true
           });
         case "playlist":
-          return /* @__PURE__ */ import_react8.default.createElement(PlaylistMenu, {
+          return /* @__PURE__ */ import_react10.default.createElement(PlaylistMenu, {
             uri
           });
         case "show":
-          return /* @__PURE__ */ import_react8.default.createElement(PodcastShowMenu, {
+          return /* @__PURE__ */ import_react10.default.createElement(PodcastShowMenu, {
             uri
           });
         case "collection":
-          return /* @__PURE__ */ import_react8.default.createElement(collection_menu_default, {
+          return /* @__PURE__ */ import_react10.default.createElement(collection_menu_default, {
             id: uri
           });
         case "folder":
-          return /* @__PURE__ */ import_react8.default.createElement(folder_menu_default, {
+          return /* @__PURE__ */ import_react10.default.createElement(folder_menu_default, {
             uri
           });
+        case "localalbum":
+          return /* @__PURE__ */ import_react10.default.createElement(local_album_menu_default, {
+            id: uri
+          });
         default:
-          return /* @__PURE__ */ import_react8.default.createElement(import_react8.default.Fragment, null);
+          return /* @__PURE__ */ import_react10.default.createElement(import_react10.default.Fragment, null);
       }
     };
     const lastfmProps = provider === "lastfm" ? {
@@ -5797,26 +5792,30 @@ var stats = (() => {
     const folderProps = type === "folder" ? {
       delegateNavigation: true,
       onClick: () => {
-        createHref({ pathname: `/library/folder/${uri}` });
-        push({ pathname: `/library/folder/${uri}` });
+        navigate(`Playlists/${uri}`);
       }
     } : {};
     const collectionProps = type === "collection" ? {
       delegateNavigation: true,
       onClick: () => {
-        createHref({ pathname: `/library/collection/${uri}` });
-        push({ pathname: `/library/collection/${uri}` });
+        navigate(`Collections/${uri}`);
       }
     } : {};
-    return /* @__PURE__ */ import_react8.default.createElement(ContextMenu, {
+    const localAlbumProps = type === "localalbum" ? {
+      delegateNavigation: true,
+      onClick: () => {
+        History.push({ pathname: "better-local-files/album", state: { uri } });
+      }
+    } : {};
+    return /* @__PURE__ */ import_react10.default.createElement(ContextMenu, {
       menu: Menu(),
       trigger: "right-click"
-    }, /* @__PURE__ */ import_react8.default.createElement("div", {
+    }, /* @__PURE__ */ import_react10.default.createElement("div", {
       style: { position: "relative" }
-    }, /* @__PURE__ */ import_react8.default.createElement(Card, {
+    }, /* @__PURE__ */ import_react10.default.createElement(Card, {
       featureIdentifier: type,
       headerText: header,
-      renderCardImage: () => /* @__PURE__ */ import_react8.default.createElement(CardImage, {
+      renderCardImage: () => /* @__PURE__ */ import_react10.default.createElement(CardImage, {
         images: [
           {
             height: 640,
@@ -5827,64 +5826,64 @@ var stats = (() => {
         isCircular: type === "artist",
         FallbackComponent: type === "folder" || type === "collection" ? folder_fallback_default : void 0
       }),
-      renderSubHeaderContent: () => /* @__PURE__ */ import_react8.default.createElement(TextComponent, {
+      renderSubHeaderContent: () => /* @__PURE__ */ import_react10.default.createElement(TextComponent, {
         as: "div",
         variant: "mesto",
-        semanticColor: "textSubdued",
-        children: subheader
-      }),
+        semanticColor: "textSubdued"
+      }, subheader),
       uri,
       ...lastfmProps,
       ...folderProps,
-      ...collectionProps
-    }), badge && /* @__PURE__ */ import_react8.default.createElement("div", {
+      ...collectionProps,
+      ...localAlbumProps
+    }), badge && /* @__PURE__ */ import_react10.default.createElement("div", {
       className: "badge"
     }, badge)));
   }
   var spotify_card_default = SpotifyCard;
 
   // src/components/shelf.tsx
-  var import_react9 = __toESM(require_react());
+  var import_react11 = __toESM(require_react());
   function Shelf(props) {
     const { TextComponent } = Spicetify.ReactComponent;
     const { title, children } = props;
-    return /* @__PURE__ */ import_react9.default.createElement("section", {
+    return /* @__PURE__ */ import_react11.default.createElement("section", {
       className: "main-shelf-shelf Shelf"
-    }, /* @__PURE__ */ import_react9.default.createElement("div", {
+    }, /* @__PURE__ */ import_react11.default.createElement("div", {
       className: "main-shelf-header"
-    }, /* @__PURE__ */ import_react9.default.createElement("div", {
+    }, /* @__PURE__ */ import_react11.default.createElement("div", {
       className: "main-shelf-topRow"
-    }, /* @__PURE__ */ import_react9.default.createElement("div", {
+    }, /* @__PURE__ */ import_react11.default.createElement("div", {
       className: "main-shelf-titleWrapper"
-    }, /* @__PURE__ */ import_react9.default.createElement(TextComponent, {
+    }, /* @__PURE__ */ import_react11.default.createElement(TextComponent, {
       children: title,
       as: "h2",
       variant: "canon",
       semanticColor: "textBase"
-    })))), /* @__PURE__ */ import_react9.default.createElement("section", null, children));
+    })))), /* @__PURE__ */ import_react11.default.createElement("section", null, children));
   }
-  var shelf_default = import_react9.default.memo(Shelf);
+  var shelf_default = import_react11.default.memo(Shelf);
 
   // ../shared/status/useStatus.tsx
-  var import_react11 = __toESM(require_react());
+  var import_react13 = __toESM(require_react());
 
   // ../shared/status/status.tsx
-  var import_react10 = __toESM(require_react());
+  var import_react12 = __toESM(require_react());
   var ErrorIcon = () => {
-    return /* @__PURE__ */ import_react10.default.createElement("svg", {
+    return /* @__PURE__ */ import_react12.default.createElement("svg", {
       "data-encore-id": "icon",
       role: "img",
       "aria-hidden": "true",
       viewBox: "0 0 24 24",
       className: "status-icon"
-    }, /* @__PURE__ */ import_react10.default.createElement("path", {
+    }, /* @__PURE__ */ import_react12.default.createElement("path", {
       d: "M11 18v-2h2v2h-2zm0-4V6h2v8h-2z"
-    }), /* @__PURE__ */ import_react10.default.createElement("path", {
+    }), /* @__PURE__ */ import_react12.default.createElement("path", {
       d: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12z"
     }));
   };
   var LibraryIcon = () => {
-    return /* @__PURE__ */ import_react10.default.createElement("svg", {
+    return /* @__PURE__ */ import_react12.default.createElement("svg", {
       role: "img",
       height: "46",
       width: "46",
@@ -5892,35 +5891,35 @@ var stats = (() => {
       viewBox: "0 0 24 24",
       "data-encore-id": "icon",
       className: "status-icon"
-    }, /* @__PURE__ */ import_react10.default.createElement("path", {
+    }, /* @__PURE__ */ import_react12.default.createElement("path", {
       d: "M14.5 2.134a1 1 0 0 1 1 0l6 3.464a1 1 0 0 1 .5.866V21a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1V3a1 1 0 0 1 .5-.866zM16 4.732V20h4V7.041l-4-2.309zM3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zm6 0a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1z"
     }));
   };
   var Status = (props) => {
-    const [isVisible, setIsVisible] = import_react10.default.useState(false);
-    import_react10.default.useEffect(() => {
+    const [isVisible, setIsVisible] = import_react12.default.useState(false);
+    import_react12.default.useEffect(() => {
       const to = setTimeout(() => {
         setIsVisible(true);
       }, 500);
       return () => clearTimeout(to);
     }, []);
-    return isVisible ? /* @__PURE__ */ import_react10.default.createElement(import_react10.default.Fragment, null, /* @__PURE__ */ import_react10.default.createElement("div", {
+    return isVisible ? /* @__PURE__ */ import_react12.default.createElement(import_react12.default.Fragment, null, /* @__PURE__ */ import_react12.default.createElement("div", {
       className: "loadingWrapper"
-    }, props.icon === "error" ? /* @__PURE__ */ import_react10.default.createElement(ErrorIcon, null) : /* @__PURE__ */ import_react10.default.createElement(LibraryIcon, null), /* @__PURE__ */ import_react10.default.createElement("h1", null, props.heading), /* @__PURE__ */ import_react10.default.createElement("h3", null, props.subheading))) : /* @__PURE__ */ import_react10.default.createElement(import_react10.default.Fragment, null);
+    }, props.icon === "error" ? /* @__PURE__ */ import_react12.default.createElement(ErrorIcon, null) : /* @__PURE__ */ import_react12.default.createElement(LibraryIcon, null), /* @__PURE__ */ import_react12.default.createElement("h1", null, props.heading), /* @__PURE__ */ import_react12.default.createElement("h3", null, props.subheading))) : /* @__PURE__ */ import_react12.default.createElement(import_react12.default.Fragment, null);
   };
   var status_default = Status;
 
   // ../shared/status/useStatus.tsx
   var useStatus = (status, error) => {
     if (status === "pending") {
-      return /* @__PURE__ */ import_react11.default.createElement(status_default, {
+      return /* @__PURE__ */ import_react13.default.createElement(status_default, {
         icon: "library",
         heading: "Loading",
         subheading: "Please wait, this may take a moment"
       });
     }
     if (status === "error") {
-      return /* @__PURE__ */ import_react11.default.createElement(status_default, {
+      return /* @__PURE__ */ import_react13.default.createElement(status_default, {
         icon: "error",
         heading: "Error",
         subheading: error?.message || "An unknown error occurred"
@@ -6125,10 +6124,10 @@ var stats = (() => {
     return parseTracks(contents);
   };
   var useQueryShitty = (callback) => {
-    const [error, setError] = import_react12.default.useState(null);
-    const [data, setData] = import_react12.default.useState(null);
-    const [status, setStatus] = import_react12.default.useState("pending");
-    import_react12.default.useEffect(() => {
+    const [error, setError] = import_react14.default.useState(null);
+    const [data, setData] = import_react14.default.useState(null);
+    const [status, setStatus] = import_react14.default.useState("pending");
+    import_react14.default.useEffect(() => {
       const fetchData = async () => {
         try {
           const data2 = await callback();
@@ -6145,20 +6144,20 @@ var stats = (() => {
     return { status, error, data };
   };
   var PlaylistPage = ({ uri }) => {
-    const query = (0, import_react12.useCallback)(() => getPlaylist(uri), [uri]);
+    const query = (0, import_react14.useCallback)(() => getPlaylist(uri), [uri]);
     const { status, error, data } = useQueryShitty(query);
     const Status2 = useStatus_default(status, error);
     if (Status2)
       return Status2;
     const analysis = data;
     const statCards = Object.entries(analysis.analysis).map(([key, value]) => {
-      return /* @__PURE__ */ import_react12.default.createElement(stat_card_default, {
+      return /* @__PURE__ */ import_react14.default.createElement(stat_card_default, {
         label: key,
         value: parseStat(key)(value)
       });
     });
     const artistCards = analysis.artists.contents.slice(0, 10).map((artist) => {
-      return /* @__PURE__ */ import_react12.default.createElement(spotify_card_default, {
+      return /* @__PURE__ */ import_react14.default.createElement(spotify_card_default, {
         type: "artist",
         provider: artist.type,
         uri: artist.uri,
@@ -6168,7 +6167,7 @@ var stats = (() => {
       });
     });
     const albumCards = analysis.albums.contents.slice(0, 10).map((album) => {
-      return /* @__PURE__ */ import_react12.default.createElement(spotify_card_default, {
+      return /* @__PURE__ */ import_react14.default.createElement(spotify_card_default, {
         type: "album",
         provider: album.type,
         uri: album.uri,
@@ -6177,55 +6176,55 @@ var stats = (() => {
         imageUrl: album.image
       });
     });
-    return /* @__PURE__ */ import_react12.default.createElement("div", {
+    return /* @__PURE__ */ import_react14.default.createElement("div", {
       id: "stats-app",
       className: "page-content encore-dark-theme encore-base-set"
-    }, /* @__PURE__ */ import_react12.default.createElement("section", {
+    }, /* @__PURE__ */ import_react14.default.createElement("section", {
       className: "stats-libraryOverview"
-    }, /* @__PURE__ */ import_react12.default.createElement(stat_card_default, {
+    }, /* @__PURE__ */ import_react14.default.createElement(stat_card_default, {
       label: "Total Tracks",
       value: analysis.length
-    }), /* @__PURE__ */ import_react12.default.createElement(stat_card_default, {
+    }), /* @__PURE__ */ import_react14.default.createElement(stat_card_default, {
       label: "Total Artists",
       value: analysis.artists.length
-    }), /* @__PURE__ */ import_react12.default.createElement(stat_card_default, {
+    }), /* @__PURE__ */ import_react14.default.createElement(stat_card_default, {
       label: "Total Albums",
       value: analysis.albums.length
-    }), /* @__PURE__ */ import_react12.default.createElement(stat_card_default, {
+    }), /* @__PURE__ */ import_react14.default.createElement(stat_card_default, {
       label: "Total Minutes",
       value: Math.floor(analysis.duration / 6e4)
-    }), /* @__PURE__ */ import_react12.default.createElement(stat_card_default, {
+    }), /* @__PURE__ */ import_react14.default.createElement(stat_card_default, {
       label: "Total Hours",
       value: (analysis.duration / 36e5).toFixed(1)
-    })), /* @__PURE__ */ import_react12.default.createElement(shelf_default, {
+    })), /* @__PURE__ */ import_react14.default.createElement(shelf_default, {
       title: "Most Frequent Genres"
-    }, /* @__PURE__ */ import_react12.default.createElement(chart_card_default, {
+    }, /* @__PURE__ */ import_react14.default.createElement(chart_card_default, {
       data: analysis.genres
-    }), /* @__PURE__ */ import_react12.default.createElement("div", {
+    }), /* @__PURE__ */ import_react14.default.createElement("div", {
       className: "main-gridContainer-gridContainer grid"
-    }, statCards)), /* @__PURE__ */ import_react12.default.createElement(shelf_default, {
+    }, statCards)), /* @__PURE__ */ import_react14.default.createElement(shelf_default, {
       title: "Release Year Distribution"
-    }, /* @__PURE__ */ import_react12.default.createElement(chart_card_default, {
+    }, /* @__PURE__ */ import_react14.default.createElement(chart_card_default, {
       data: analysis.releaseYears
     })));
   };
-  var playlist_default = import_react12.default.memo(PlaylistPage);
+  var playlist_default = import_react14.default.memo(PlaylistPage);
 
   // package.json
-  var version = "1.1.1";
+  var version = "1.1.2";
 
   // ../shared/config/config_wrapper.tsx
-  var import_react14 = __toESM(require_react());
+  var import_react16 = __toESM(require_react());
 
   // ../shared/config/config_modal.tsx
-  var import_react13 = __toESM(require_react());
+  var import_react15 = __toESM(require_react());
   var TextInput = (props) => {
     const handleTextChange = (event) => {
       props.callback(event.target.value);
     };
-    return /* @__PURE__ */ import_react13.default.createElement("label", {
+    return /* @__PURE__ */ import_react15.default.createElement("label", {
       className: "text-input-wrapper"
-    }, /* @__PURE__ */ import_react13.default.createElement("input", {
+    }, /* @__PURE__ */ import_react15.default.createElement("input", {
       className: "text-input",
       type: "text",
       value: props.value || "",
@@ -6240,16 +6239,16 @@ var stats = (() => {
     const handleDropdownChange = (event) => {
       props.callback(event.target.value);
     };
-    return /* @__PURE__ */ import_react13.default.createElement("label", {
+    return /* @__PURE__ */ import_react15.default.createElement("label", {
       className: "dropdown-wrapper"
-    }, /* @__PURE__ */ import_react13.default.createElement("select", {
+    }, /* @__PURE__ */ import_react15.default.createElement("select", {
       className: "dropdown-input",
       value: props.value,
       "data-storage-key": props.storageKey,
       id: `dropdown:${props.storageKey}`,
       title: `Dropdown for ${props.storageKey}`,
       onChange: handleDropdownChange
-    }, props.options.map((option, index) => /* @__PURE__ */ import_react13.default.createElement("option", {
+    }, props.options.map((option, index) => /* @__PURE__ */ import_react15.default.createElement("option", {
       key: index,
       value: option
     }, option))));
@@ -6259,7 +6258,7 @@ var stats = (() => {
     const handleToggleChange = (newValue) => {
       props.callback(newValue);
     };
-    return /* @__PURE__ */ import_react13.default.createElement(Toggle, {
+    return /* @__PURE__ */ import_react15.default.createElement(Toggle, {
       id: `toggle:${props.storageKey}`,
       value: props.value,
       onSelected: (newValue) => handleToggleChange(newValue)
@@ -6267,44 +6266,47 @@ var stats = (() => {
   };
   var SliderInput = (props) => {
     const { Slider } = Spicetify.ReactComponent;
-    const handleSliderChange = (newValue) => {
+    const [value, setValue] = import_react15.default.useState((props.value - props.min) / (props.max - props.min));
+    const handleSliderChange = import_react15.default.useCallback((newValue) => {
+      setValue(newValue);
       const calculatedValue = props.min + newValue * (props.max - props.min);
       props.callback(calculatedValue);
-    };
-    const value = (props.value - props.min) / (props.max - props.min);
-    return /* @__PURE__ */ import_react13.default.createElement(Slider, {
+    }, [props]);
+    const handleDragMove = import_react15.default.useCallback((v) => {
+      console.log(v);
+    }, []);
+    return /* @__PURE__ */ import_react15.default.createElement(Slider, {
       id: `slider:${props.storageKey}`,
       value,
       min: 0,
       max: 1,
       step: 0.1,
-      onDragMove: (newValue) => handleSliderChange(newValue),
-      onDragStart: () => {
-      },
+      onDragMove: handleDragMove,
+      onDragStart: handleSliderChange,
       onDragEnd: () => {
       }
     });
   };
   var TooltipIcon = () => {
-    return /* @__PURE__ */ import_react13.default.createElement("svg", {
+    return /* @__PURE__ */ import_react15.default.createElement("svg", {
       role: "img",
       height: "16",
       width: "16",
       className: "Svg-sc-ytk21e-0 uPxdw nW1RKQOkzcJcX6aDCZB4",
       viewBox: "0 0 16 16"
-    }, /* @__PURE__ */ import_react13.default.createElement("path", {
+    }, /* @__PURE__ */ import_react15.default.createElement("path", {
       d: "M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8z"
-    }), /* @__PURE__ */ import_react13.default.createElement("path", {
+    }), /* @__PURE__ */ import_react15.default.createElement("path", {
       d: "M7.25 12.026v-1.5h1.5v1.5h-1.5zm.884-7.096A1.125 1.125 0 007.06 6.39l-1.431.448a2.625 2.625 0 115.13-.784c0 .54-.156 1.015-.503 1.488-.3.408-.7.652-.973.818l-.112.068c-.185.116-.26.203-.302.283-.046.087-.097.245-.097.57h-1.5c0-.47.072-.898.274-1.277.206-.385.507-.645.827-.846l.147-.092c.285-.177.413-.257.526-.41.169-.23.213-.397.213-.602 0-.622-.503-1.125-1.125-1.125z"
     }));
   };
   var ConfigRow = (props) => {
-    return /* @__PURE__ */ import_react13.default.createElement("div", {
+    return /* @__PURE__ */ import_react15.default.createElement("div", {
       className: "setting-row"
-    }, /* @__PURE__ */ import_react13.default.createElement("label", {
+    }, /* @__PURE__ */ import_react15.default.createElement("label", {
       className: "col description"
-    }, props.name, props.desc && /* @__PURE__ */ import_react13.default.createElement(Spicetify.ReactComponent.TooltipWrapper, {
-      label: /* @__PURE__ */ import_react13.default.createElement("div", {
+    }, props.name, props.desc && /* @__PURE__ */ import_react15.default.createElement(Spicetify.ReactComponent.TooltipWrapper, {
+      label: /* @__PURE__ */ import_react15.default.createElement("div", {
         dangerouslySetInnerHTML: { __html: props.desc }
       }),
       renderInline: true,
@@ -6312,15 +6314,15 @@ var stats = (() => {
       placement: "top",
       labelClassName: "tooltip",
       disabled: false
-    }, /* @__PURE__ */ import_react13.default.createElement("div", {
+    }, /* @__PURE__ */ import_react15.default.createElement("div", {
       className: "tooltip-icon"
-    }, /* @__PURE__ */ import_react13.default.createElement(TooltipIcon, null)))), /* @__PURE__ */ import_react13.default.createElement("div", {
+    }, /* @__PURE__ */ import_react15.default.createElement(TooltipIcon, null)))), /* @__PURE__ */ import_react15.default.createElement("div", {
       className: "col action"
     }, props.children));
   };
   var ConfigModal = (props) => {
     const { config, structure, appKey, updateAppConfig } = props;
-    const [modalConfig, setModalConfig] = import_react13.default.useState({ ...config });
+    const [modalConfig, setModalConfig] = import_react15.default.useState({ ...config });
     const modalRows = structure.map((modalRow, index) => {
       const key = modalRow.key;
       const currentValue = modalConfig[key];
@@ -6338,26 +6340,26 @@ var stats = (() => {
       const element = () => {
         switch (modalRow.type) {
           case "toggle":
-            return /* @__PURE__ */ import_react13.default.createElement(ToggleInput, {
+            return /* @__PURE__ */ import_react15.default.createElement(ToggleInput, {
               storageKey: key,
               value: currentValue,
               callback: updateItem
             });
           case "text":
-            return /* @__PURE__ */ import_react13.default.createElement(TextInput, {
+            return /* @__PURE__ */ import_react15.default.createElement(TextInput, {
               storageKey: key,
               value: currentValue,
               callback: updateItem
             });
           case "dropdown":
-            return /* @__PURE__ */ import_react13.default.createElement(Dropdown, {
+            return /* @__PURE__ */ import_react15.default.createElement(Dropdown, {
               storageKey: key,
               value: currentValue,
               options: modalRow.options,
               callback: updateItem
             });
           case "slider":
-            return /* @__PURE__ */ import_react13.default.createElement(SliderInput, {
+            return /* @__PURE__ */ import_react15.default.createElement(SliderInput, {
               storageKey: key,
               value: currentValue,
               min: modalRow.min,
@@ -6367,14 +6369,14 @@ var stats = (() => {
             });
         }
       };
-      return /* @__PURE__ */ import_react13.default.createElement(import_react13.default.Fragment, null, header && index !== 0 && /* @__PURE__ */ import_react13.default.createElement("br", null), header && /* @__PURE__ */ import_react13.default.createElement("h2", {
+      return /* @__PURE__ */ import_react15.default.createElement(import_react15.default.Fragment, null, header && index !== 0 && /* @__PURE__ */ import_react15.default.createElement("br", null), header && /* @__PURE__ */ import_react15.default.createElement("h2", {
         className: "section-header"
-      }, modalRow.sectionHeader), /* @__PURE__ */ import_react13.default.createElement(ConfigRow, {
+      }, modalRow.sectionHeader), /* @__PURE__ */ import_react15.default.createElement(ConfigRow, {
         name: modalRow.name,
         desc: modalRow.desc
       }, element()));
     });
-    return /* @__PURE__ */ import_react13.default.createElement("div", {
+    return /* @__PURE__ */ import_react15.default.createElement("div", {
       className: "config-container"
     }, modalRows);
   };
@@ -6401,7 +6403,7 @@ var stats = (() => {
         };
         Spicetify.PopupModal.display({
           title: `${key.charAt(0).toUpperCase() + key.slice(1)} Settings`,
-          content: /* @__PURE__ */ import_react14.default.createElement(config_modal_default, {
+          content: /* @__PURE__ */ import_react16.default.createElement(config_modal_default, {
             config: this.Config,
             structure: modalStructure,
             appKey: key,
@@ -6510,10 +6512,11 @@ var stats = (() => {
     document.head.appendChild(styleLink);
     const playlistEdit = new Topbar.Button("playlist-stats", "visualizer", () => {
       const playlistUri = `spotify:playlist:${History.location.pathname.split("/")[2]}`;
-      PopupModal.display({ title: "Playlist Stats", content: /* @__PURE__ */ import_react15.default.createElement(playlist_default, {
+      PopupModal.display({ title: "Playlist Stats", content: /* @__PURE__ */ import_react17.default.createElement(playlist_default, {
         uri: playlistUri
       }), isLarge: true });
-    });
+    }, false, true);
+    playlistEdit.element.classList.add("playlist-stats-button");
     playlistEdit.element.classList.toggle("hidden", true);
     function setTopbarButtonVisibility(pathname) {
       const [, type, uid] = pathname.split("/");

@@ -1,0 +1,6 @@
+2025/04/03-09:47:44.334 1066b Reusing MANIFEST /home/gurmukh/.config/discord/Local Storage/leveldb/MANIFEST-000001
+2025/04/03-09:47:44.340 1066b Recovering log #12
+2025/04/03-09:47:44.341 1066b Reusing old log /home/gurmukh/.config/discord/Local Storage/leveldb/000012.log 
+2025/04/03-09:50:45.678 1066b Level-0 table #16: started
+2025/04/03-09:50:45.697 1066b Level-0 table #16: 3535872 bytes OK
+2025/04/03-09:50:45.699 1066b Delete type=0 #12

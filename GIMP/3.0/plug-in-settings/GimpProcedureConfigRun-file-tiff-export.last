@@ -1,0 +1,18 @@
+# settings
+
+(bigtiff no)
+(compression "none")
+(save-transparent-pixels yes)
+(cmyk no)
+(include-exif no)
+(include-iptc no)
+(include-xmp no)
+(include-color-profile no)
+(include-thumbnail no)
+(include-comment no)
+(save-layers yes)
+(crop-layers yes)
+(save-geotiff yes)
+(gimp-comment "Created with GIMP")
+
+# end of settings

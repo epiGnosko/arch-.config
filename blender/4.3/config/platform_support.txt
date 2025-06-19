@@ -1,2 +1,0 @@
-{Intel/Mesa Intel(R) Arc(tm) Graphics (MTL)/4.6 (Core Profile) Mesa 24.3.2-arch1.1}=SUPPORTED
-{Intel/Mesa Intel(R) Arc(tm) Graphics (MTL)/4.6 (Core Profile) Mesa 24.3.3-arch1.2}=SUPPORTED

@@ -5,7 +5,6 @@ var stats = (() => {
   var __getOwnPropNames = Object.getOwnPropertyNames;
   var __getProtoOf = Object.getPrototypeOf;
   var __hasOwnProp = Object.prototype.hasOwnProperty;
-  var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
   var __commonJS = (cb, mod) => function __require() {
     return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
   };
@@ -26,10 +25,6 @@ var stats = (() => {
     mod
   ));
   var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-  var __publicField = (obj, key, value) => {
-    __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-    return value;
-  };
 
   // external-global-plugin:react
   var require_react = __commonJS({
@@ -5490,7 +5485,7 @@ var stats = (() => {
   });
 
   // src/app.tsx
-  var import_react30 = __toESM(require_react());
+  var import_react33 = __toESM(require_react());
 
   // ../node_modules/spcr-navigation-bar/useNavigationBar.tsx
   var import_react3 = __toESM(require_react());
@@ -5548,7 +5543,7 @@ var stats = (() => {
   });
   var optionsMenu_default = OptionsMenu;
 
-  // postcss-module:C:\Users\user\AppData\Local\Temp\tmp-2132-C1IXGV9b5FdF\191733900bf3\navBar.module.css
+  // postcss-module:C:\Users\user\AppData\Local\Temp\tmp-7200-acM0y32DxAC6\1961477a68f3\navBar.module.css
   var navBar_module_default = { "topBarHeaderItem": "navBar-module__topBarHeaderItem___piw4C_stats", "topBarHeaderItemLink": "navBar-module__topBarHeaderItemLink___xA4uv_stats", "topBarActive": "navBar-module__topBarActive___XhWpm_stats", "topBarNav": "navBar-module__topBarNav___qWGeZ_stats", "optionsMenuDropBox": "navBar-module__optionsMenuDropBox___pzfNI_stats" };
 
   // ../node_modules/spcr-navigation-bar/navBar.tsx
@@ -5676,7 +5671,7 @@ var stats = (() => {
   var useNavigationBar_default = useNavigationBar;
 
   // src/pages/top_artists.tsx
-  var import_react18 = __toESM(require_react());
+  var import_react21 = __toESM(require_react());
 
   // ../shared/dropdown/useDropdownMenu.tsx
   var import_react5 = __toESM(require_react());
@@ -5821,6 +5816,9 @@ var stats = (() => {
     const deleteCollection = () => {
       CollectionsWrapper.deleteCollection(id);
     };
+    const deleteCollectionAndAlbums = () => {
+      CollectionsWrapper.deleteCollectionAndAlbums(id);
+    };
     const renameCollection = () => {
       const name = CollectionsWrapper.getCollection(id)?.name;
       const rename = (newName) => {
@@ -5870,7 +5868,12 @@ var stats = (() => {
         path: deleteIconPath
       }),
       onClick: deleteCollection
-    }, "Delete"), synced ? /* @__PURE__ */ import_react8.default.createElement(MenuItem2, {
+    }, "Delete (Only Collection)"), /* @__PURE__ */ import_react8.default.createElement(MenuItem2, {
+      leadingIcon: /* @__PURE__ */ import_react8.default.createElement(leading_icon_default, {
+        path: deleteIconPath
+      }),
+      onClick: deleteCollectionAndAlbums
+    }, "Delete (Collection and Albums)"), synced ? /* @__PURE__ */ import_react8.default.createElement(MenuItem2, {
       leadingIcon: /* @__PURE__ */ import_react8.default.createElement(leading_icon_default, {
         path: deleteIconPath
       }),
@@ -5896,48 +5899,14 @@ var stats = (() => {
 
   // ../library/src/components/folder_menu.tsx
   var import_react9 = __toESM(require_react());
-
-  // ../library/src/extensions/folder_image_wrapper.ts
-  var _FolderImageWrapper = class extends EventTarget {
-    _folderImages;
-    constructor() {
-      super();
-      this._folderImages = JSON.parse(localStorage.getItem("library:folderImages") || "{}");
-    }
-    getFolderImage(uri) {
-      return this._folderImages[uri];
-    }
-    getFolderImages() {
-      return this._folderImages;
-    }
-    setFolderImage({ uri, url }) {
-      this._folderImages[uri] = url;
-      this.saveFolderImages();
-      Spicetify.showNotification("Folder image updated");
-    }
-    removeFolderImage(uri) {
-      delete this._folderImages[uri];
-      this.saveFolderImages();
-      Spicetify.showNotification("Folder image removed");
-    }
-    saveFolderImages() {
-      this.dispatchEvent(new CustomEvent("update", { detail: this._folderImages }));
-      localStorage.setItem("library:folderImages", JSON.stringify(this._folderImages));
-    }
-  };
-  var FolderImageWrapper = _FolderImageWrapper;
-  __publicField(FolderImageWrapper, "INSTANCE", new _FolderImageWrapper());
-  var folder_image_wrapper_default = FolderImageWrapper.INSTANCE;
-
-  // ../library/src/components/folder_menu.tsx
   var editIconPath2 = '<path d="M11.838.714a2.438 2.438 0 0 1 3.448 3.448l-9.841 9.841c-.358.358-.79.633-1.267.806l-3.173 1.146a.75.75 0 0 1-.96-.96l1.146-3.173c.173-.476.448-.909.806-1.267l9.84-9.84zm2.387 1.06a.938.938 0 0 0-1.327 0l-9.84 9.842a1.953 1.953 0 0 0-.456.716L2 14.002l1.669-.604a1.95 1.95 0 0 0 .716-.455l9.841-9.841a.938.938 0 0 0 0-1.327z"></path>';
   var deleteIconPath2 = '<path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"></path><path d="M12 8.75H4v-1.5h8v1.5z"></path>';
   var FolderMenu = ({ uri }) => {
     const { MenuItem: MenuItem2, Menu } = Spicetify.ReactComponent;
-    const image = folder_image_wrapper_default.getFolderImage(uri);
+    const image = FolderImageWrapper.getFolderImage(uri);
     const setImage = () => {
       const setNewImage = (newUrl) => {
-        folder_image_wrapper_default.setFolderImage({ uri, url: newUrl });
+        FolderImageWrapper.setFolderImage({ uri, url: newUrl });
       };
       Spicetify.PopupModal.display({
         title: "Set Folder Image",
@@ -5949,7 +5918,7 @@ var stats = (() => {
       });
     };
     const removeImage = () => {
-      folder_image_wrapper_default.removeFolderImage(uri);
+      FolderImageWrapper.removeFolderImage(uri);
     };
     return /* @__PURE__ */ import_react9.default.createElement(Menu, null, /* @__PURE__ */ import_react9.default.createElement(MenuItem2, {
       leadingIcon: /* @__PURE__ */ import_react9.default.createElement(leading_icon_default, {
@@ -5966,7 +5935,7 @@ var stats = (() => {
   var folder_menu_default = FolderMenu;
 
   // ../shared/components/spotify_card.tsx
-  var import_react11 = __toESM(require_react());
+  var import_react13 = __toESM(require_react());
 
   // ../shared/components/folder_fallback.tsx
   var import_react10 = __toESM(require_react());
@@ -5983,42 +5952,63 @@ var stats = (() => {
   };
   var folder_fallback_default = FolderSVG;
 
+  // ../library/src/components/nav_context.tsx
+  var import_react11 = __toESM(require_react());
+  var NavigationContext = import_react11.default.createContext(null);
+  var useNavigation = () => {
+    const ctx = import_react11.default.useContext(NavigationContext);
+    return ctx;
+  };
+
+  // ../library/src/components/local_album_menu.tsx
+  var import_react12 = __toESM(require_react());
+  var LocalAlbumMenu = ({ id }) => {
+    const { Menu, MenuItem: MenuItem2 } = Spicetify.ReactComponent;
+    return /* @__PURE__ */ import_react12.default.createElement(Menu, null);
+  };
+  var local_album_menu_default = LocalAlbumMenu;
+
   // ../shared/components/spotify_card.tsx
   function SpotifyCard(props) {
     const { Cards, TextComponent, ArtistMenu, AlbumMenu, PodcastShowMenu, PlaylistMenu, ContextMenu } = Spicetify.ReactComponent;
     const { FeatureCard: Card, CardImage } = Cards;
-    const { createHref, push } = Spicetify.Platform.History;
+    const { History } = Spicetify.Platform;
+    const { navigate } = useNavigation() ?? {};
     const { type, header, uri, imageUrl, subheader, artistUri, badge, provider } = props;
     const Menu = () => {
       switch (type) {
         case "artist":
-          return /* @__PURE__ */ import_react11.default.createElement(ArtistMenu, {
+          return /* @__PURE__ */ import_react13.default.createElement(ArtistMenu, {
             uri
           });
         case "album":
-          return /* @__PURE__ */ import_react11.default.createElement(AlbumMenu, {
+          return /* @__PURE__ */ import_react13.default.createElement(AlbumMenu, {
             uri,
             artistUri,
             canRemove: true
           });
         case "playlist":
-          return /* @__PURE__ */ import_react11.default.createElement(PlaylistMenu, {
+          return /* @__PURE__ */ import_react13.default.createElement(PlaylistMenu, {
             uri
           });
         case "show":
-          return /* @__PURE__ */ import_react11.default.createElement(PodcastShowMenu, {
+          return /* @__PURE__ */ import_react13.default.createElement(PodcastShowMenu, {
             uri
           });
         case "collection":
-          return /* @__PURE__ */ import_react11.default.createElement(collection_menu_default, {
+          return /* @__PURE__ */ import_react13.default.createElement(collection_menu_default, {
             id: uri
           });
         case "folder":
-          return /* @__PURE__ */ import_react11.default.createElement(folder_menu_default, {
+          return /* @__PURE__ */ import_react13.default.createElement(folder_menu_default, {
             uri
           });
+        case "localalbum":
+          return /* @__PURE__ */ import_react13.default.createElement(local_album_menu_default, {
+            id: uri
+          });
         default:
-          return /* @__PURE__ */ import_react11.default.createElement(import_react11.default.Fragment, null);
+          return /* @__PURE__ */ import_react13.default.createElement(import_react13.default.Fragment, null);
       }
     };
     const lastfmProps = provider === "lastfm" ? {
@@ -6029,26 +6019,30 @@ var stats = (() => {
     const folderProps = type === "folder" ? {
       delegateNavigation: true,
       onClick: () => {
-        createHref({ pathname: `/library/folder/${uri}` });
-        push({ pathname: `/library/folder/${uri}` });
+        navigate(`Playlists/${uri}`);
       }
     } : {};
     const collectionProps = type === "collection" ? {
       delegateNavigation: true,
       onClick: () => {
-        createHref({ pathname: `/library/collection/${uri}` });
-        push({ pathname: `/library/collection/${uri}` });
+        navigate(`Collections/${uri}`);
       }
     } : {};
-    return /* @__PURE__ */ import_react11.default.createElement(ContextMenu, {
+    const localAlbumProps = type === "localalbum" ? {
+      delegateNavigation: true,
+      onClick: () => {
+        History.push({ pathname: "better-local-files/album", state: { uri } });
+      }
+    } : {};
+    return /* @__PURE__ */ import_react13.default.createElement(ContextMenu, {
       menu: Menu(),
       trigger: "right-click"
-    }, /* @__PURE__ */ import_react11.default.createElement("div", {
+    }, /* @__PURE__ */ import_react13.default.createElement("div", {
       style: { position: "relative" }
-    }, /* @__PURE__ */ import_react11.default.createElement(Card, {
+    }, /* @__PURE__ */ import_react13.default.createElement(Card, {
       featureIdentifier: type,
       headerText: header,
-      renderCardImage: () => /* @__PURE__ */ import_react11.default.createElement(CardImage, {
+      renderCardImage: () => /* @__PURE__ */ import_react13.default.createElement(CardImage, {
         images: [
           {
             height: 640,
@@ -6059,27 +6053,27 @@ var stats = (() => {
         isCircular: type === "artist",
         FallbackComponent: type === "folder" || type === "collection" ? folder_fallback_default : void 0
       }),
-      renderSubHeaderContent: () => /* @__PURE__ */ import_react11.default.createElement(TextComponent, {
+      renderSubHeaderContent: () => /* @__PURE__ */ import_react13.default.createElement(TextComponent, {
         as: "div",
         variant: "mesto",
-        semanticColor: "textSubdued",
-        children: subheader
-      }),
+        semanticColor: "textSubdued"
+      }, subheader),
       uri,
       ...lastfmProps,
       ...folderProps,
-      ...collectionProps
-    }), badge && /* @__PURE__ */ import_react11.default.createElement("div", {
+      ...collectionProps,
+      ...localAlbumProps
+    }), badge && /* @__PURE__ */ import_react13.default.createElement("div", {
       className: "badge"
     }, badge)));
   }
   var spotify_card_default = SpotifyCard;
 
   // ../shared/components/page_container.tsx
-  var import_react13 = __toESM(require_react());
+  var import_react16 = __toESM(require_react());
 
   // src/components/buttons/create_playlist_button.tsx
-  var import_react12 = __toESM(require_react());
+  var import_react14 = __toESM(require_react());
   async function createPlaylistAsync(infoToCreatePlaylist) {
     const { Platform, showNotification } = Spicetify;
     const { RootlistAPI, PlaylistAPI } = Platform;
@@ -6095,11 +6089,11 @@ var stats = (() => {
   function CreatePlaylistButton(props) {
     const { TooltipWrapper, ButtonSecondary } = Spicetify.ReactComponent;
     const { infoToCreatePlaylist } = props;
-    return /* @__PURE__ */ import_react12.default.createElement(TooltipWrapper, {
+    return /* @__PURE__ */ import_react14.default.createElement(TooltipWrapper, {
       label: "Turn Into Playlist",
       renderInline: true,
       placement: "top"
-    }, /* @__PURE__ */ import_react12.default.createElement(ButtonSecondary, {
+    }, /* @__PURE__ */ import_react14.default.createElement(ButtonSecondary, {
       "aria-label": "Turn Into Playlist",
       children: "Turn Into Playlist",
       semanticColor: "textBase",
@@ -6110,35 +6104,64 @@ var stats = (() => {
   }
   var create_playlist_button_default = CreatePlaylistButton;
 
+  // ../library/src/components/back_button.tsx
+  var import_react15 = __toESM(require_react());
+  function BackIcon() {
+    return /* @__PURE__ */ import_react15.default.createElement(Spicetify.ReactComponent.IconComponent, {
+      semanticColor: "textSubdued",
+      dangerouslySetInnerHTML: {
+        __html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.957 2.793a1 1 0 0 1 0 1.414L8.164 12l7.793 7.793a1 1 0 1 1-1.414 1.414L5.336 12l9.207-9.207a1 1 0 0 1 1.414 0z"></path></svg>'
+      },
+      iconSize: 16
+    });
+  }
+  function BackButton() {
+    const { ReactComponent } = Spicetify;
+    const { TooltipWrapper, ButtonTertiary } = ReactComponent;
+    const { goBack } = useNavigation();
+    return /* @__PURE__ */ import_react15.default.createElement(TooltipWrapper, {
+      label: "Back",
+      placement: "top"
+    }, /* @__PURE__ */ import_react15.default.createElement("span", null, /* @__PURE__ */ import_react15.default.createElement(ButtonTertiary, {
+      buttonSize: "sm",
+      "aria-label": "Back",
+      iconOnly: BackIcon,
+      onClick: () => {
+        goBack();
+      }
+    })));
+  }
+  var back_button_default = BackButton;
+
   // ../shared/components/page_container.tsx
   var PageContainer = (props) => {
     const { title, infoToCreatePlaylist, headerEls, children } = props;
     const { TextComponent } = Spicetify.ReactComponent;
-    return /* @__PURE__ */ import_react13.default.createElement("section", {
+    return /* @__PURE__ */ import_react16.default.createElement("section", {
       className: "contentSpacing"
-    }, /* @__PURE__ */ import_react13.default.createElement("div", {
+    }, /* @__PURE__ */ import_react16.default.createElement("div", {
       className: "page-header"
-    }, /* @__PURE__ */ import_react13.default.createElement("div", {
+    }, /* @__PURE__ */ import_react16.default.createElement("div", {
       className: "header-left"
-    }, /* @__PURE__ */ import_react13.default.createElement(TextComponent, {
+    }, props.hasHistory ? /* @__PURE__ */ import_react16.default.createElement(back_button_default, null) : null, /* @__PURE__ */ import_react16.default.createElement(TextComponent, {
       children: title,
       as: "h1",
       variant: "canon",
       semanticColor: "textBase"
-    }), infoToCreatePlaylist ? /* @__PURE__ */ import_react13.default.createElement(create_playlist_button_default, {
+    }), infoToCreatePlaylist ? /* @__PURE__ */ import_react16.default.createElement(create_playlist_button_default, {
       infoToCreatePlaylist
-    }) : null), /* @__PURE__ */ import_react13.default.createElement("div", {
+    }) : null), /* @__PURE__ */ import_react16.default.createElement("div", {
       className: "header-right"
-    }, headerEls)), /* @__PURE__ */ import_react13.default.createElement("div", {
+    }, headerEls)), /* @__PURE__ */ import_react16.default.createElement("div", {
       className: "page-content"
     }, children));
   };
   var page_container_default = PageContainer;
 
   // ../shared/components/settings_button.tsx
-  var import_react14 = __toESM(require_react());
+  var import_react17 = __toESM(require_react());
   function SettingsIcon() {
-    return /* @__PURE__ */ import_react14.default.createElement(Spicetify.ReactComponent.IconComponent, {
+    return /* @__PURE__ */ import_react17.default.createElement(Spicetify.ReactComponent.IconComponent, {
       semanticColor: "textSubdued",
       dangerouslySetInnerHTML: {
         __html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 13.616v-3.232c-1.651-.587-2.694-.752-3.219-2.019v-.001c-.527-1.271.1-2.134.847-3.707l-2.285-2.285c-1.561.742-2.433 1.375-3.707.847h-.001c-1.269-.526-1.435-1.576-2.019-3.219h-3.232c-.582 1.635-.749 2.692-2.019 3.219h-.001c-1.271.528-2.132-.098-3.707-.847l-2.285 2.285c.745 1.568 1.375 2.434.847 3.707-.527 1.271-1.584 1.438-3.219 2.02v3.232c1.632.58 2.692.749 3.219 2.019.53 1.282-.114 2.166-.847 3.707l2.285 2.286c1.562-.743 2.434-1.375 3.707-.847h.001c1.27.526 1.436 1.579 2.019 3.219h3.232c.582-1.636.75-2.69 2.027-3.222h.001c1.262-.524 2.12.101 3.698.851l2.285-2.286c-.744-1.563-1.375-2.433-.848-3.706.527-1.271 1.588-1.44 3.221-2.021zm-12 2.384c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4z"/></svg>'
@@ -6149,11 +6172,11 @@ var stats = (() => {
   function SettingsButton(props) {
     const { TooltipWrapper, ButtonTertiary } = Spicetify.ReactComponent;
     const { configWrapper } = props;
-    return /* @__PURE__ */ import_react14.default.createElement(TooltipWrapper, {
+    return /* @__PURE__ */ import_react17.default.createElement(TooltipWrapper, {
       label: "Settings",
       renderInline: true,
       placement: "top"
-    }, /* @__PURE__ */ import_react14.default.createElement(ButtonTertiary, {
+    }, /* @__PURE__ */ import_react17.default.createElement(ButtonTertiary, {
       buttonSize: "sm",
       onClick: configWrapper.launchModal,
       "aria-label": "Settings",
@@ -6163,9 +6186,9 @@ var stats = (() => {
   var settings_button_default = SettingsButton;
 
   // src/components/buttons/refresh_button.tsx
-  var import_react15 = __toESM(require_react());
+  var import_react18 = __toESM(require_react());
   function RefreshIcon() {
-    return /* @__PURE__ */ import_react15.default.createElement(Spicetify.ReactComponent.IconComponent, {
+    return /* @__PURE__ */ import_react18.default.createElement(Spicetify.ReactComponent.IconComponent, {
       semanticColor: "textSubdued",
       iconSize: 16,
       dangerouslySetInnerHTML: {
@@ -6176,11 +6199,11 @@ var stats = (() => {
   function RefreshButton(props) {
     const { ButtonTertiary, TooltipWrapper } = Spicetify.ReactComponent;
     const { callback } = props;
-    return /* @__PURE__ */ import_react15.default.createElement(TooltipWrapper, {
+    return /* @__PURE__ */ import_react18.default.createElement(TooltipWrapper, {
       label: "Refresh",
       renderInline: true,
       placement: "top"
-    }, /* @__PURE__ */ import_react15.default.createElement(ButtonTertiary, {
+    }, /* @__PURE__ */ import_react18.default.createElement(ButtonTertiary, {
       buttonSize: "sm",
       onClick: callback,
       "aria-label": "Refresh",
@@ -6427,25 +6450,25 @@ var stats = (() => {
   };
 
   // ../shared/status/useStatus.tsx
-  var import_react17 = __toESM(require_react());
+  var import_react20 = __toESM(require_react());
 
   // ../shared/status/status.tsx
-  var import_react16 = __toESM(require_react());
+  var import_react19 = __toESM(require_react());
   var ErrorIcon = () => {
-    return /* @__PURE__ */ import_react16.default.createElement("svg", {
+    return /* @__PURE__ */ import_react19.default.createElement("svg", {
       "data-encore-id": "icon",
       role: "img",
       "aria-hidden": "true",
       viewBox: "0 0 24 24",
       className: "status-icon"
-    }, /* @__PURE__ */ import_react16.default.createElement("path", {
+    }, /* @__PURE__ */ import_react19.default.createElement("path", {
       d: "M11 18v-2h2v2h-2zm0-4V6h2v8h-2z"
-    }), /* @__PURE__ */ import_react16.default.createElement("path", {
+    }), /* @__PURE__ */ import_react19.default.createElement("path", {
       d: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12z"
     }));
   };
   var LibraryIcon = () => {
-    return /* @__PURE__ */ import_react16.default.createElement("svg", {
+    return /* @__PURE__ */ import_react19.default.createElement("svg", {
       role: "img",
       height: "46",
       width: "46",
@@ -6453,35 +6476,35 @@ var stats = (() => {
       viewBox: "0 0 24 24",
       "data-encore-id": "icon",
       className: "status-icon"
-    }, /* @__PURE__ */ import_react16.default.createElement("path", {
+    }, /* @__PURE__ */ import_react19.default.createElement("path", {
       d: "M14.5 2.134a1 1 0 0 1 1 0l6 3.464a1 1 0 0 1 .5.866V21a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1V3a1 1 0 0 1 .5-.866zM16 4.732V20h4V7.041l-4-2.309zM3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zm6 0a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1z"
     }));
   };
   var Status = (props) => {
-    const [isVisible, setIsVisible] = import_react16.default.useState(false);
-    import_react16.default.useEffect(() => {
+    const [isVisible, setIsVisible] = import_react19.default.useState(false);
+    import_react19.default.useEffect(() => {
       const to = setTimeout(() => {
         setIsVisible(true);
       }, 500);
       return () => clearTimeout(to);
     }, []);
-    return isVisible ? /* @__PURE__ */ import_react16.default.createElement(import_react16.default.Fragment, null, /* @__PURE__ */ import_react16.default.createElement("div", {
+    return isVisible ? /* @__PURE__ */ import_react19.default.createElement(import_react19.default.Fragment, null, /* @__PURE__ */ import_react19.default.createElement("div", {
       className: "loadingWrapper"
-    }, props.icon === "error" ? /* @__PURE__ */ import_react16.default.createElement(ErrorIcon, null) : /* @__PURE__ */ import_react16.default.createElement(LibraryIcon, null), /* @__PURE__ */ import_react16.default.createElement("h1", null, props.heading), /* @__PURE__ */ import_react16.default.createElement("h3", null, props.subheading))) : /* @__PURE__ */ import_react16.default.createElement(import_react16.default.Fragment, null);
+    }, props.icon === "error" ? /* @__PURE__ */ import_react19.default.createElement(ErrorIcon, null) : /* @__PURE__ */ import_react19.default.createElement(LibraryIcon, null), /* @__PURE__ */ import_react19.default.createElement("h1", null, props.heading), /* @__PURE__ */ import_react19.default.createElement("h3", null, props.subheading))) : /* @__PURE__ */ import_react19.default.createElement(import_react19.default.Fragment, null);
   };
   var status_default = Status;
 
   // ../shared/status/useStatus.tsx
   var useStatus = (status, error) => {
     if (status === "pending") {
-      return /* @__PURE__ */ import_react17.default.createElement(status_default, {
+      return /* @__PURE__ */ import_react20.default.createElement(status_default, {
         icon: "library",
         heading: "Loading",
         subheading: "Please wait, this may take a moment"
       });
     }
     if (status === "error") {
-      return /* @__PURE__ */ import_react17.default.createElement(status_default, {
+      return /* @__PURE__ */ import_react20.default.createElement(status_default, {
         icon: "error",
         heading: "Error",
         subheading: error?.message || "An unknown error occurred"
@@ -6527,20 +6550,20 @@ var stats = (() => {
       title: "Top Artists",
       headerEls: [
         dropdown,
-        /* @__PURE__ */ import_react18.default.createElement(refresh_button_default, {
+        /* @__PURE__ */ import_react21.default.createElement(refresh_button_default, {
           callback: () => invalidator(["top-artists", activeOption.id], refetch)
         }),
-        /* @__PURE__ */ import_react18.default.createElement(settings_button_default, {
+        /* @__PURE__ */ import_react21.default.createElement(settings_button_default, {
           configWrapper
         })
       ]
     };
     if (Status2)
-      return /* @__PURE__ */ import_react18.default.createElement(page_container_default, {
+      return /* @__PURE__ */ import_react21.default.createElement(page_container_default, {
         ...props
       }, Status2);
     const topArtists = data;
-    const artistCards = topArtists.map((artist, index) => /* @__PURE__ */ import_react18.default.createElement(spotify_card_default, {
+    const artistCards = topArtists.map((artist, index) => /* @__PURE__ */ import_react21.default.createElement(spotify_card_default, {
       type: "artist",
       provider: artist.type,
       uri: artist.uri,
@@ -6549,99 +6572,99 @@ var stats = (() => {
       imageUrl: artist.image,
       badge: `${index + 1}`
     }));
-    return /* @__PURE__ */ import_react18.default.createElement(import_react18.default.Fragment, null, /* @__PURE__ */ import_react18.default.createElement(page_container_default, {
+    return /* @__PURE__ */ import_react21.default.createElement(import_react21.default.Fragment, null, /* @__PURE__ */ import_react21.default.createElement(page_container_default, {
       ...props
-    }, /* @__PURE__ */ import_react18.default.createElement("div", {
+    }, /* @__PURE__ */ import_react21.default.createElement("div", {
       className: "main-gridContainer-gridContainer grid"
     }, artistCards)));
   };
-  var top_artists_default = import_react18.default.memo(ArtistsPage);
+  var top_artists_default = import_react21.default.memo(ArtistsPage);
 
   // src/pages/top_tracks.tsx
-  var import_react22 = __toESM(require_react());
+  var import_react25 = __toESM(require_react());
 
   // src/components/track_row.tsx
-  var import_react21 = __toESM(require_react());
+  var import_react24 = __toESM(require_react());
 
   // src/pages/charts.tsx
-  var import_react20 = __toESM(require_react());
+  var import_react23 = __toESM(require_react());
 
   // src/components/tracklist.tsx
-  var import_react19 = __toESM(require_react());
+  var import_react22 = __toESM(require_react());
   var Tracklist = ({ playcount = false, minified = false, children }) => {
     const height = children.length;
-    return /* @__PURE__ */ import_react19.default.createElement("div", {
+    return /* @__PURE__ */ import_react22.default.createElement("div", {
       role: "grid",
       "aria-rowcount": height,
       "aria-colcount": 5,
       className: "main-trackList-trackList main-trackList-indexable"
-    }, !minified && /* @__PURE__ */ import_react19.default.createElement("div", {
+    }, !minified && /* @__PURE__ */ import_react22.default.createElement("div", {
       className: "main-trackList-trackListHeader",
       role: "presentation"
-    }, /* @__PURE__ */ import_react19.default.createElement("div", {
+    }, /* @__PURE__ */ import_react22.default.createElement("div", {
       className: "main-trackList-trackListHeaderRow main-trackList-trackListRowGrid",
       role: "row",
       "aria-rowindex": 1
-    }, /* @__PURE__ */ import_react19.default.createElement("div", {
+    }, /* @__PURE__ */ import_react22.default.createElement("div", {
       className: "main-trackList-rowSectionIndex",
       role: "columnheader",
       "aria-colindex": 1,
       "aria-sort": "none",
       tabIndex: -1
-    }, "#"), /* @__PURE__ */ import_react19.default.createElement("div", {
+    }, "#"), /* @__PURE__ */ import_react22.default.createElement("div", {
       className: "main-trackList-rowSectionStart",
       role: "columnheader",
       "aria-colindex": 2,
       "aria-sort": "none",
       tabIndex: -1
-    }, /* @__PURE__ */ import_react19.default.createElement("button", {
+    }, /* @__PURE__ */ import_react22.default.createElement("button", {
       type: "button",
       className: "main-trackList-column main-trackList-sortable",
       tabIndex: -1
-    }, /* @__PURE__ */ import_react19.default.createElement("span", {
+    }, /* @__PURE__ */ import_react22.default.createElement("span", {
       className: "TypeElement-mesto-type standalone-ellipsis-one-line",
       "data-encore-id": "type"
-    }, "Title"))), playcount && /* @__PURE__ */ import_react19.default.createElement("div", {
+    }, "Title"))), playcount && /* @__PURE__ */ import_react22.default.createElement("div", {
       className: "main-trackList-rowSectionVariable",
       role: "columnheader",
       "aria-colindex": 3,
       "aria-sort": "none",
       tabIndex: -1
-    }, /* @__PURE__ */ import_react19.default.createElement("button", {
+    }, /* @__PURE__ */ import_react22.default.createElement("button", {
       type: "button",
       className: "main-trackList-column main-trackList-sortable",
       tabIndex: -1
-    }, /* @__PURE__ */ import_react19.default.createElement("span", {
+    }, /* @__PURE__ */ import_react22.default.createElement("span", {
       className: "TypeElement-mesto-type standalone-ellipsis-one-line",
       "data-encore-id": "type"
-    }, "\u29BE Scrobbles"))), /* @__PURE__ */ import_react19.default.createElement("div", {
+    }, "\u29BE Scrobbles"))), /* @__PURE__ */ import_react22.default.createElement("div", {
       className: "main-trackList-rowSectionVariable",
       role: "columnheader",
       "aria-colindex": 4,
       "aria-sort": "none",
       tabIndex: -1
-    }, /* @__PURE__ */ import_react19.default.createElement("button", {
+    }, /* @__PURE__ */ import_react22.default.createElement("button", {
       type: "button",
       className: "main-trackList-column main-trackList-sortable",
       tabIndex: -1
-    }, /* @__PURE__ */ import_react19.default.createElement("span", {
+    }, /* @__PURE__ */ import_react22.default.createElement("span", {
       className: "TypeElement-mesto-type standalone-ellipsis-one-line",
       "data-encore-id": "type"
-    }, "Album"))), /* @__PURE__ */ import_react19.default.createElement("div", {
+    }, "Album"))), /* @__PURE__ */ import_react22.default.createElement("div", {
       className: "main-trackList-rowSectionEnd",
       role: "columnheader",
       "aria-colindex": 5,
       "aria-sort": "none",
       tabIndex: -1
-    }, /* @__PURE__ */ import_react19.default.createElement(Spicetify.ReactComponent.TooltipWrapper, {
+    }, /* @__PURE__ */ import_react22.default.createElement(Spicetify.ReactComponent.TooltipWrapper, {
       label: "Duration",
       placement: "top"
-    }, /* @__PURE__ */ import_react19.default.createElement("button", {
+    }, /* @__PURE__ */ import_react22.default.createElement("button", {
       type: "button",
       "aria-label": "Duration",
       className: "main-trackList-column main-trackList-durationHeader main-trackList-sortable",
       tabIndex: -1
-    }, /* @__PURE__ */ import_react19.default.createElement("svg", {
+    }, /* @__PURE__ */ import_react22.default.createElement("svg", {
       role: "img",
       height: "16",
       width: "16",
@@ -6649,15 +6672,15 @@ var stats = (() => {
       viewBox: "0 0 16 16",
       "data-encore-id": "icon",
       className: "Svg-img-16 Svg-img-16-icon Svg-img-icon Svg-img-icon-small"
-    }, /* @__PURE__ */ import_react19.default.createElement("path", {
+    }, /* @__PURE__ */ import_react22.default.createElement("path", {
       d: "M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"
-    }), /* @__PURE__ */ import_react19.default.createElement("path", {
+    }), /* @__PURE__ */ import_react22.default.createElement("path", {
       d: "M8 3.25a.75.75 0 0 1 .75.75v3.25H11a.75.75 0 0 1 0 1.5H7.25V4A.75.75 0 0 1 8 3.25z"
-    }))))))), /* @__PURE__ */ import_react19.default.createElement("div", {
+    }))))))), /* @__PURE__ */ import_react22.default.createElement("div", {
       className: "main-rootlist-wrapper",
       role: "presentation",
       style: { height: height * 56 }
-    }, /* @__PURE__ */ import_react19.default.createElement("div", {
+    }, /* @__PURE__ */ import_react22.default.createElement("div", {
       role: "presentation"
     }, children)));
   };
@@ -6840,10 +6863,10 @@ var stats = (() => {
     return Promise.all(response.map(convertTrack));
   };
   var ArtistChart = ({ artists }) => {
-    return /* @__PURE__ */ import_react20.default.createElement("div", {
+    return /* @__PURE__ */ import_react23.default.createElement("div", {
       className: "main-gridContainer-gridContainer grid"
     }, artists.map((artist, index) => {
-      return /* @__PURE__ */ import_react20.default.createElement(spotify_card_default, {
+      return /* @__PURE__ */ import_react23.default.createElement(spotify_card_default, {
         type: "artist",
         provider: artist.type,
         uri: artist.uri,
@@ -6855,9 +6878,9 @@ var stats = (() => {
     }));
   };
   var TrackChart = ({ tracks }) => {
-    return /* @__PURE__ */ import_react20.default.createElement(tracklist_default, {
+    return /* @__PURE__ */ import_react23.default.createElement(tracklist_default, {
       playcount: true
-    }, tracks.map((track, index) => /* @__PURE__ */ import_react20.default.createElement(track_row_default, {
+    }, tracks.map((track, index) => /* @__PURE__ */ import_react23.default.createElement(track_row_default, {
       index: index + 1,
       ...track,
       uris: tracks.map((track2) => track2.uri)
@@ -6883,16 +6906,16 @@ var stats = (() => {
       title: `Top Charts - ${import_lodash.default.startCase(activeOption.id)}`,
       headerEls: [
         dropdown,
-        /* @__PURE__ */ import_react20.default.createElement(refresh_button_default, {
+        /* @__PURE__ */ import_react23.default.createElement(refresh_button_default, {
           callback: () => invalidator(["top-charts", activeOption.id], refetch)
         }),
-        /* @__PURE__ */ import_react20.default.createElement(settings_button_default, {
+        /* @__PURE__ */ import_react23.default.createElement(settings_button_default, {
           configWrapper
         })
       ]
     };
     if (Status2)
-      return /* @__PURE__ */ import_react20.default.createElement(page_container_default, {
+      return /* @__PURE__ */ import_react23.default.createElement(page_container_default, {
         ...props
       }, Status2);
     const items = data;
@@ -6903,38 +6926,36 @@ var stats = (() => {
     if (activeOption.id === "tracks") {
       props.infoToCreatePlaylist = infoToCreatePlaylist;
     }
-    const chartToRender = activeOption.id === "artists" ? /* @__PURE__ */ import_react20.default.createElement(ArtistChart, {
+    const chartToRender = activeOption.id === "artists" ? /* @__PURE__ */ import_react23.default.createElement(ArtistChart, {
       artists: items
-    }) : /* @__PURE__ */ import_react20.default.createElement(TrackChart, {
+    }) : /* @__PURE__ */ import_react23.default.createElement(TrackChart, {
       tracks: items
     });
-    return /* @__PURE__ */ import_react20.default.createElement(page_container_default, {
+    return /* @__PURE__ */ import_react23.default.createElement(page_container_default, {
       ...props
     }, chartToRender);
   };
-  var charts_default = import_react20.default.memo(ChartsPage);
+  var charts_default = import_react23.default.memo(ChartsPage);
 
   // src/components/track_row.tsx
   var ArtistLink = ({ name, uri, index, length }) => {
-    return /* @__PURE__ */ import_react21.default.createElement(import_react21.default.Fragment, null, /* @__PURE__ */ import_react21.default.createElement("a", {
+    return /* @__PURE__ */ import_react24.default.createElement(import_react24.default.Fragment, null, /* @__PURE__ */ import_react24.default.createElement("a", {
       draggable: "true",
       dir: "auto",
       href: uri,
       tabIndex: -1
     }, name), index === length ? null : ", ");
   };
-  var ExplicitBadge = import_react21.default.memo(() => {
-    return /* @__PURE__ */ import_react21.default.createElement(import_react21.default.Fragment, null, /* @__PURE__ */ import_react21.default.createElement("span", {
+  var ExplicitBadge = import_react24.default.memo(() => {
+    return /* @__PURE__ */ import_react24.default.createElement(import_react24.default.Fragment, null, /* @__PURE__ */ import_react24.default.createElement("span", {
       className: "TypeElement-ballad-textSubdued-type main-trackList-rowBadges",
-      "data-encore-id": "type"
-    }, /* @__PURE__ */ import_react21.default.createElement("span", {
+      "data-encore-id": "type",
       "aria-label": "Explicit",
-      className: "main-tag-container",
       title: "Explicit"
-    }, "E")));
+    }, "\u{1F174}"));
   });
   var LikedIcon = ({ active, uri }) => {
-    const [liked, setLiked] = import_react21.default.useState(active);
+    const [liked, setLiked] = import_react24.default.useState(active);
     const toggleLike = () => {
       if (liked) {
         Spicetify.Platform.LibraryAPI.remove({ uris: [uri] });
@@ -6943,13 +6964,13 @@ var stats = (() => {
       }
       setLiked(!liked);
     };
-    import_react21.default.useEffect(() => {
+    import_react24.default.useEffect(() => {
       setLiked(active);
     }, [active]);
-    return /* @__PURE__ */ import_react21.default.createElement(Spicetify.ReactComponent.TooltipWrapper, {
+    return /* @__PURE__ */ import_react24.default.createElement(Spicetify.ReactComponent.TooltipWrapper, {
       label: liked ? "Remove from Your Library" : "Save to Your Library",
       placement: "top"
-    }, /* @__PURE__ */ import_react21.default.createElement("button", {
+    }, /* @__PURE__ */ import_react24.default.createElement("button", {
       type: "button",
       role: "switch",
       "aria-checked": liked,
@@ -6957,7 +6978,7 @@ var stats = (() => {
       onClick: toggleLike,
       className: liked ? "main-addButton-button main-trackList-rowHeartButton main-addButton-active" : "main-addButton-button main-trackList-rowHeartButton",
       tabIndex: -1
-    }, /* @__PURE__ */ import_react21.default.createElement("svg", {
+    }, /* @__PURE__ */ import_react24.default.createElement("svg", {
       role: "img",
       height: "16",
       width: "16",
@@ -6965,7 +6986,7 @@ var stats = (() => {
       viewBox: "0 0 16 16",
       "data-encore-id": "icon",
       className: "Svg-img-16 Svg-img-16-icon Svg-img-icon Svg-img-icon-small"
-    }, /* @__PURE__ */ import_react21.default.createElement("path", {
+    }, /* @__PURE__ */ import_react24.default.createElement("path", {
       d: liked ? "M15.724 4.22A4.313 4.313 0 0 0 12.192.814a4.269 4.269 0 0 0-3.622 1.13.837.837 0 0 1-1.14 0 4.272 4.272 0 0 0-6.21 5.855l5.916 7.05a1.128 1.128 0 0 0 1.727 0l5.916-7.05a4.228 4.228 0 0 0 .945-3.577z" : "M1.69 2A4.582 4.582 0 0 1 8 2.023 4.583 4.583 0 0 1 11.88.817h.002a4.618 4.618 0 0 1 3.782 3.65v.003a4.543 4.543 0 0 1-1.011 3.84L9.35 14.629a1.765 1.765 0 0 1-2.093.464 1.762 1.762 0 0 1-.605-.463L1.348 8.309A4.582 4.582 0 0 1 1.689 2zm3.158.252A3.082 3.082 0 0 0 2.49 7.337l.005.005L7.8 13.664a.264.264 0 0 0 .311.069.262.262 0 0 0 .09-.069l5.312-6.33a3.043 3.043 0 0 0 .68-2.573 3.118 3.118 0 0 0-2.551-2.463 3.079 3.079 0 0 0-2.612.816l-.007.007a1.501 1.501 0 0 1-2.045 0l-.009-.008a3.082 3.082 0 0 0-2.121-.861z"
     }))));
   };
@@ -6975,63 +6996,64 @@ var stats = (() => {
     ...props
   }) => {
     const dragHandler = Spicetify.ReactHook.DragHandler?.([uri], title);
-    return /* @__PURE__ */ import_react21.default.createElement("div", {
+    return /* @__PURE__ */ import_react24.default.createElement("div", {
       onDragStart: dragHandler,
       draggable: "true",
       ...props
     }, props.children);
   };
-  function playAndQueue(uri, uris) {
+  function playAndQueue(uri) {
+    Spicetify.Player.playUri(uri);
   }
-  var MenuWrapper = import_react21.default.memo((props) => /* @__PURE__ */ import_react21.default.createElement(Spicetify.ReactComponent.AlbumMenu, {
+  var MenuWrapper = import_react24.default.memo((props) => /* @__PURE__ */ import_react24.default.createElement(Spicetify.ReactComponent.AlbumMenu, {
     ...props
   }));
   var TrackRow = (props) => {
     const ArtistLinks = props.artists.map((artist, index) => {
-      return /* @__PURE__ */ import_react21.default.createElement(ArtistLink, {
+      return /* @__PURE__ */ import_react24.default.createElement(ArtistLink, {
         index,
         length: props.artists.length - 1,
         name: artist.name,
         uri: artist.uri
       });
     });
-    return /* @__PURE__ */ import_react21.default.createElement(import_react21.default.Fragment, null, /* @__PURE__ */ import_react21.default.createElement(Spicetify.ReactComponent.ContextMenu, {
-      menu: /* @__PURE__ */ import_react21.default.createElement(MenuWrapper, {
+    return /* @__PURE__ */ import_react24.default.createElement(import_react24.default.Fragment, null, /* @__PURE__ */ import_react24.default.createElement(Spicetify.ReactComponent.ContextMenu, {
+      menu: /* @__PURE__ */ import_react24.default.createElement(MenuWrapper, {
         uri: props.uri
       }),
       trigger: "right-click"
-    }, /* @__PURE__ */ import_react21.default.createElement("div", {
+    }, /* @__PURE__ */ import_react24.default.createElement("div", {
       role: "row",
       "aria-rowindex": 2,
       "aria-selected": "false"
-    }, /* @__PURE__ */ import_react21.default.createElement(DraggableComponent, {
+    }, /* @__PURE__ */ import_react24.default.createElement(DraggableComponent, {
       uri: props.uri,
       title: `${props.name} \u2022 ${props.artists.map((artist) => artist.name).join(", ")}`,
       className: "main-trackList-trackListRow main-trackList-trackListRowGrid",
       role: "presentation",
-      onClick: (event) => event.detail === 2 && playAndQueue(props.uri, props.uris),
+      onClick: (event) => event.detail === 2 && playAndQueue(props.uri),
       style: { height: 56 }
-    }, /* @__PURE__ */ import_react21.default.createElement("div", {
+    }, /* @__PURE__ */ import_react24.default.createElement("div", {
       className: "main-trackList-rowSectionIndex",
       role: "gridcell",
       "aria-colindex": 1,
       tabIndex: -1
-    }, /* @__PURE__ */ import_react21.default.createElement("div", {
+    }, /* @__PURE__ */ import_react24.default.createElement("div", {
       uri: props.uri,
       className: "main-trackList-rowMarker"
-    }, /* @__PURE__ */ import_react21.default.createElement("span", {
+    }, /* @__PURE__ */ import_react24.default.createElement("span", {
       className: "TypeElement-ballad-type main-trackList-number",
       "data-encore-id": "type"
-    }, props.index), /* @__PURE__ */ import_react21.default.createElement(Spicetify.ReactComponent.TooltipWrapper, {
+    }, props.index), /* @__PURE__ */ import_react24.default.createElement(Spicetify.ReactComponent.TooltipWrapper, {
       label: `Play ${props.name} by ${props.artists.map((artist) => artist.name).join(", ")}`,
       placement: "top"
-    }, /* @__PURE__ */ import_react21.default.createElement("button", {
+    }, /* @__PURE__ */ import_react24.default.createElement("button", {
       type: "button",
       className: "main-trackList-rowImagePlayButton",
       "aria-label": `Play ${props.name}`,
       tabIndex: -1,
-      onClick: () => playAndQueue(props.uri, props.uris)
-    }, /* @__PURE__ */ import_react21.default.createElement("svg", {
+      onClick: () => playAndQueue(props.uri)
+    }, /* @__PURE__ */ import_react24.default.createElement("svg", {
       role: "img",
       height: "24",
       width: "24",
@@ -7039,14 +7061,14 @@ var stats = (() => {
       className: "Svg-img-24 Svg-img-24-icon main-trackList-rowPlayPauseIcon",
       viewBox: "0 0 24 24",
       "data-encore-id": "icon"
-    }, /* @__PURE__ */ import_react21.default.createElement("path", {
+    }, /* @__PURE__ */ import_react24.default.createElement("path", {
       d: "m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"
-    })))))), /* @__PURE__ */ import_react21.default.createElement("div", {
+    })))))), /* @__PURE__ */ import_react24.default.createElement("div", {
       className: "main-trackList-rowSectionStart",
       role: "gridcell",
       "aria-colindex": 2,
       tabIndex: -1
-    }, /* @__PURE__ */ import_react21.default.createElement("img", {
+    }, /* @__PURE__ */ import_react24.default.createElement("img", {
       "aria-hidden": "false",
       draggable: "false",
       loading: "eager",
@@ -7055,63 +7077,63 @@ var stats = (() => {
       className: "main-image-image main-trackList-rowImage main-image-loaded",
       width: "40",
       height: "40"
-    }), /* @__PURE__ */ import_react21.default.createElement("div", {
+    }), /* @__PURE__ */ import_react24.default.createElement("div", {
       className: "main-trackList-rowMainContent"
-    }, /* @__PURE__ */ import_react21.default.createElement("div", {
+    }, /* @__PURE__ */ import_react24.default.createElement("div", {
       dir: "auto",
       className: "TypeElement-ballad-textBase TypeElement-ballad-textBase-type main-trackList-rowTitle standalone-ellipsis-one-line",
       "data-encore-id": "type"
-    }, props.name), props.explicit && /* @__PURE__ */ import_react21.default.createElement(ExplicitBadge, null), /* @__PURE__ */ import_react21.default.createElement("span", {
+    }, props.name), props.explicit && /* @__PURE__ */ import_react24.default.createElement(ExplicitBadge, null), /* @__PURE__ */ import_react24.default.createElement("span", {
       className: "TypeElement-mesto-textSubdued TypeElement-mesto-textSubdued-type main-trackList-rowSubTitle standalone-ellipsis-one-line",
       "data-encore-id": "type"
-    }, ArtistLinks))), props.playcount && /* @__PURE__ */ import_react21.default.createElement("div", {
+    }, ArtistLinks))), props.playcount && /* @__PURE__ */ import_react24.default.createElement("div", {
       className: "main-trackList-rowSectionVariable",
       role: "gridcell",
       "aria-colindex": 3,
       tabIndex: -1
-    }, /* @__PURE__ */ import_react21.default.createElement("span", {
+    }, /* @__PURE__ */ import_react24.default.createElement("span", {
       "data-encore-id": "type",
       className: "TypeElement-mesto TypeElement-mesto-type"
-    }, formatNumber(props.playcount))), /* @__PURE__ */ import_react21.default.createElement("div", {
+    }, formatNumber(props.playcount))), /* @__PURE__ */ import_react24.default.createElement("div", {
       className: "main-trackList-rowSectionVariable",
       role: "gridcell",
       "aria-colindex": 4,
       tabIndex: -1
-    }, /* @__PURE__ */ import_react21.default.createElement("span", {
+    }, /* @__PURE__ */ import_react24.default.createElement("span", {
       "data-encore-id": "type",
       className: "TypeElement-mesto TypeElement-mesto-type"
-    }, /* @__PURE__ */ import_react21.default.createElement("a", {
+    }, /* @__PURE__ */ import_react24.default.createElement("a", {
       draggable: "true",
       className: "standalone-ellipsis-one-line",
       dir: "auto",
       href: props.album?.uri,
       tabIndex: -1
-    }, props.album?.name || "Unknown"))), /* @__PURE__ */ import_react21.default.createElement("div", {
+    }, props.album?.name || "Unknown"))), /* @__PURE__ */ import_react24.default.createElement("div", {
       className: "main-trackList-rowSectionEnd",
       role: "gridcell",
       "aria-colindex": 5,
       tabIndex: -1
-    }, /* @__PURE__ */ import_react21.default.createElement(LikedIcon, {
+    }, /* @__PURE__ */ import_react24.default.createElement(LikedIcon, {
       active: props.liked || false,
       uri: props.uri
-    }), /* @__PURE__ */ import_react21.default.createElement("div", {
+    }), /* @__PURE__ */ import_react24.default.createElement("div", {
       className: "TypeElement-mesto-textSubdued TypeElement-mesto-textSubdued-type main-trackList-rowDuration",
       "data-encore-id": "type"
-    }, Spicetify.Player.formatTime(props.duration_ms)), /* @__PURE__ */ import_react21.default.createElement(Spicetify.ReactComponent.ContextMenu, {
-      menu: /* @__PURE__ */ import_react21.default.createElement(MenuWrapper, {
+    }, Spicetify.Player.formatTime(props.duration_ms)), /* @__PURE__ */ import_react24.default.createElement(Spicetify.ReactComponent.ContextMenu, {
+      menu: /* @__PURE__ */ import_react24.default.createElement(MenuWrapper, {
         uri: props.uri
       }),
       trigger: "click"
-    }, /* @__PURE__ */ import_react21.default.createElement("button", {
+    }, /* @__PURE__ */ import_react24.default.createElement("button", {
       type: "button",
       "aria-haspopup": "menu",
       "aria-label": `More options for ${props.name}`,
       className: "main-moreButton-button Button-sm-16-buttonTertiary-iconOnly-condensed-useBrowserDefaultFocusStyle Button-small-small-buttonTertiary-iconOnly-condensed-useBrowserDefaultFocusStyle main-trackList-rowMoreButton",
       tabIndex: -1
-    }, /* @__PURE__ */ import_react21.default.createElement(Spicetify.ReactComponent.TooltipWrapper, {
+    }, /* @__PURE__ */ import_react24.default.createElement(Spicetify.ReactComponent.TooltipWrapper, {
       label: `More options for ${props.name} by ${props.artists.map((artist) => artist.name).join(", ")}`,
       placement: "top"
-    }, /* @__PURE__ */ import_react21.default.createElement("span", null, /* @__PURE__ */ import_react21.default.createElement("svg", {
+    }, /* @__PURE__ */ import_react24.default.createElement("span", null, /* @__PURE__ */ import_react24.default.createElement("svg", {
       role: "img",
       height: "16",
       width: "16",
@@ -7119,11 +7141,11 @@ var stats = (() => {
       viewBox: "0 0 16 16",
       "data-encore-id": "icon",
       className: "Svg-img-16 Svg-img-16-icon Svg-img-icon Svg-img-icon-small"
-    }, /* @__PURE__ */ import_react21.default.createElement("path", {
+    }, /* @__PURE__ */ import_react24.default.createElement("path", {
       d: "M3 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm6.5 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM16 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
     })))))))))));
   };
-  var track_row_default = import_react21.default.memo(TrackRow);
+  var track_row_default = import_react24.default.memo(TrackRow);
 
   // src/pages/top_tracks.tsx
   var getTopTracks3 = async (timeRange, config) => {
@@ -7148,16 +7170,16 @@ var stats = (() => {
       title: "Top Tracks",
       headerEls: [
         dropdown,
-        /* @__PURE__ */ import_react22.default.createElement(refresh_button_default, {
+        /* @__PURE__ */ import_react25.default.createElement(refresh_button_default, {
           callback: () => invalidator(["top-tracks", activeOption.id], refetch)
         }),
-        /* @__PURE__ */ import_react22.default.createElement(settings_button_default, {
+        /* @__PURE__ */ import_react25.default.createElement(settings_button_default, {
           configWrapper
         })
       ]
     };
     if (Status2)
-      return /* @__PURE__ */ import_react22.default.createElement(page_container_default, {
+      return /* @__PURE__ */ import_react25.default.createElement(page_container_default, {
         ...props
       }, Status2);
     const topTracks = data;
@@ -7165,35 +7187,35 @@ var stats = (() => {
       playlistName: `Top Songs - ${activeOption.name}`,
       itemsUris: topTracks.map((track) => track.uri)
     };
-    const trackRows = topTracks.map((track, index) => /* @__PURE__ */ import_react22.default.createElement(track_row_default, {
+    const trackRows = topTracks.map((track, index) => /* @__PURE__ */ import_react25.default.createElement(track_row_default, {
       index: index + 1,
       ...track,
       uris: topTracks.map((track2) => track2.uri)
     }));
-    return /* @__PURE__ */ import_react22.default.createElement(page_container_default, {
+    return /* @__PURE__ */ import_react25.default.createElement(page_container_default, {
       ...props,
       infoToCreatePlaylist
-    }, /* @__PURE__ */ import_react22.default.createElement(tracklist_default, {
+    }, /* @__PURE__ */ import_react25.default.createElement(tracklist_default, {
       playcount: Boolean(topTracks[0]?.playcount)
     }, trackRows));
   };
-  var top_tracks_default = import_react22.default.memo(TracksPage);
+  var top_tracks_default = import_react25.default.memo(TracksPage);
 
   // src/pages/top_genres.tsx
-  var import_react26 = __toESM(require_react());
+  var import_react29 = __toESM(require_react());
 
   // src/components/cards/stat_card.tsx
-  var import_react23 = __toESM(require_react());
+  var import_react26 = __toESM(require_react());
   var import_lodash2 = __toESM(require_lodash());
   function StatCard({ label, value }) {
     const { TextComponent } = Spicetify.ReactComponent;
-    return /* @__PURE__ */ import_react23.default.createElement("div", {
+    return /* @__PURE__ */ import_react26.default.createElement("div", {
       className: "main-card-card"
-    }, /* @__PURE__ */ import_react23.default.createElement(TextComponent, {
+    }, /* @__PURE__ */ import_react26.default.createElement(TextComponent, {
       as: "div",
       semanticColor: "textBase",
       variant: "alto"
-    }, value), /* @__PURE__ */ import_react23.default.createElement(TextComponent, {
+    }, value), /* @__PURE__ */ import_react26.default.createElement(TextComponent, {
       as: "div",
       semanticColor: "textBase",
       variant: "balladBold"
@@ -7202,28 +7224,28 @@ var stats = (() => {
   var stat_card_default = StatCard;
 
   // src/components/cards/chart_card.tsx
-  var import_react24 = __toESM(require_react());
+  var import_react27 = __toESM(require_react());
   var ChartLine = (name, value, limit, total) => {
-    return /* @__PURE__ */ import_react24.default.createElement("div", {
+    return /* @__PURE__ */ import_react27.default.createElement("div", {
       className: "stats-genreRow"
-    }, /* @__PURE__ */ import_react24.default.createElement("div", {
+    }, /* @__PURE__ */ import_react27.default.createElement("div", {
       className: "stats-genreRowFill",
       style: {
         width: `calc(${value / limit * 100}% + ${(limit - value) / (limit - 1) * 100}px)`
       }
-    }, /* @__PURE__ */ import_react24.default.createElement("span", {
+    }, /* @__PURE__ */ import_react27.default.createElement("span", {
       className: "stats-genreText"
-    }, name)), /* @__PURE__ */ import_react24.default.createElement("span", {
+    }, name)), /* @__PURE__ */ import_react27.default.createElement("span", {
       className: "stats-genreValue"
     }, `${Math.round(value / total * 100)}%`));
   };
   var ChartCard = ({ data }) => {
-    const [extended, setExtended] = import_react24.default.useState(false);
+    const [extended, setExtended] = import_react27.default.useState(false);
     const keys = Object.keys(data).sort((a, b) => data[b] - data[a]).slice(0, extended ? 50 : 10);
     const total = Object.values(data).reduce((acc, curr) => acc + curr, 0);
-    return /* @__PURE__ */ import_react24.default.createElement("div", {
+    return /* @__PURE__ */ import_react27.default.createElement("div", {
       className: "main-card-card stats-genreCard"
-    }, keys.map((key) => ChartLine(key, data[key], data[keys[0]], total)), /* @__PURE__ */ import_react24.default.createElement("button", {
+    }, keys.map((key) => ChartLine(key, data[key], data[keys[0]], total)), /* @__PURE__ */ import_react27.default.createElement("button", {
       type: "button",
       className: "extend-button",
       onClick: () => {
@@ -7234,26 +7256,26 @@ var stats = (() => {
   var chart_card_default = ChartCard;
 
   // src/components/shelf.tsx
-  var import_react25 = __toESM(require_react());
+  var import_react28 = __toESM(require_react());
   function Shelf(props) {
     const { TextComponent } = Spicetify.ReactComponent;
     const { title, children } = props;
-    return /* @__PURE__ */ import_react25.default.createElement("section", {
+    return /* @__PURE__ */ import_react28.default.createElement("section", {
       className: "main-shelf-shelf Shelf"
-    }, /* @__PURE__ */ import_react25.default.createElement("div", {
+    }, /* @__PURE__ */ import_react28.default.createElement("div", {
       className: "main-shelf-header"
-    }, /* @__PURE__ */ import_react25.default.createElement("div", {
+    }, /* @__PURE__ */ import_react28.default.createElement("div", {
       className: "main-shelf-topRow"
-    }, /* @__PURE__ */ import_react25.default.createElement("div", {
+    }, /* @__PURE__ */ import_react28.default.createElement("div", {
       className: "main-shelf-titleWrapper"
-    }, /* @__PURE__ */ import_react25.default.createElement(TextComponent, {
+    }, /* @__PURE__ */ import_react28.default.createElement(TextComponent, {
       children: title,
       as: "h2",
       variant: "canon",
       semanticColor: "textBase"
-    })))), /* @__PURE__ */ import_react25.default.createElement("section", null, children));
+    })))), /* @__PURE__ */ import_react28.default.createElement("section", null, children));
   }
-  var shelf_default = import_react25.default.memo(Shelf);
+  var shelf_default = import_react28.default.memo(Shelf);
 
   // src/pages/top_genres.tsx
   var parseAlbums2 = (albums) => {
@@ -7302,46 +7324,46 @@ var stats = (() => {
       title: "Top Genres",
       headerEls: [
         dropdown,
-        /* @__PURE__ */ import_react26.default.createElement(refresh_button_default, {
+        /* @__PURE__ */ import_react29.default.createElement(refresh_button_default, {
           callback: () => invalidator(["top-genres", activeOption.id], refetch)
         }),
-        /* @__PURE__ */ import_react26.default.createElement(settings_button_default, {
+        /* @__PURE__ */ import_react29.default.createElement(settings_button_default, {
           configWrapper
         })
       ]
     };
     if (Status2)
-      return /* @__PURE__ */ import_react26.default.createElement(page_container_default, {
+      return /* @__PURE__ */ import_react29.default.createElement(page_container_default, {
         ...props
       }, Status2);
     const analysis = data;
     const statCards = Object.entries(analysis.analysis).map(([key, value]) => {
-      return /* @__PURE__ */ import_react26.default.createElement(stat_card_default, {
+      return /* @__PURE__ */ import_react29.default.createElement(stat_card_default, {
         label: key,
         value: parseStat(key)(value)
       });
     });
-    return /* @__PURE__ */ import_react26.default.createElement(page_container_default, {
+    return /* @__PURE__ */ import_react29.default.createElement(page_container_default, {
       ...props
-    }, /* @__PURE__ */ import_react26.default.createElement("section", {
+    }, /* @__PURE__ */ import_react29.default.createElement("section", {
       className: "main-shelf-shelf Shelf"
-    }, /* @__PURE__ */ import_react26.default.createElement(chart_card_default, {
+    }, /* @__PURE__ */ import_react29.default.createElement(chart_card_default, {
       data: analysis.genres
-    }), /* @__PURE__ */ import_react26.default.createElement("div", {
+    }), /* @__PURE__ */ import_react29.default.createElement("div", {
       className: "main-gridContainer-gridContainer grid"
-    }, statCards)), /* @__PURE__ */ import_react26.default.createElement(shelf_default, {
+    }, statCards)), /* @__PURE__ */ import_react29.default.createElement(shelf_default, {
       title: "Release Year Distribution"
-    }, /* @__PURE__ */ import_react26.default.createElement(chart_card_default, {
+    }, /* @__PURE__ */ import_react29.default.createElement(chart_card_default, {
       data: analysis.releaseYears
     })));
   };
-  var top_genres_default = import_react26.default.memo(GenresPage);
+  var top_genres_default = import_react29.default.memo(GenresPage);
 
   // src/pages/library.tsx
-  var import_react28 = __toESM(require_react());
+  var import_react31 = __toESM(require_react());
 
   // src/components/inline_grid.tsx
-  var import_react27 = __toESM(require_react());
+  var import_react30 = __toESM(require_react());
   function scrollGrid(event) {
     const { target } = event;
     if (!(target instanceof HTMLElement))
@@ -7372,20 +7394,20 @@ var stats = (() => {
   }
   function InlineGrid(props) {
     const { children, special } = props;
-    return /* @__PURE__ */ import_react27.default.createElement("section", {
+    return /* @__PURE__ */ import_react30.default.createElement("section", {
       className: "stats-gridInlineSection"
-    }, /* @__PURE__ */ import_react27.default.createElement("button", {
+    }, /* @__PURE__ */ import_react30.default.createElement("button", {
       className: "stats-scrollButton",
       onClick: scrollGridLeft
-    }, "<"), /* @__PURE__ */ import_react27.default.createElement("button", {
+    }, "<"), /* @__PURE__ */ import_react30.default.createElement("button", {
       className: "stats-scrollButton",
       onClick: scrollGrid
-    }, ">"), /* @__PURE__ */ import_react27.default.createElement("div", {
+    }, ">"), /* @__PURE__ */ import_react30.default.createElement("div", {
       className: `main-gridContainer-gridContainer stats-gridInline${special ? " stats-specialGrid" : ""}`,
       "data-scroll": "start"
     }, children));
   }
-  var inline_grid_default = import_react27.default.memo(InlineGrid);
+  var inline_grid_default = import_react30.default.memo(InlineGrid);
 
   // src/pages/library.tsx
   var DropdownOptions3 = [
@@ -7412,28 +7434,28 @@ var stats = (() => {
       title: "Library Analysis",
       headerEls: [
         dropdown,
-        /* @__PURE__ */ import_react28.default.createElement(refresh_button_default, {
+        /* @__PURE__ */ import_react31.default.createElement(refresh_button_default, {
           callback: () => invalidator(["library", activeOption.id], refetch)
         }),
-        /* @__PURE__ */ import_react28.default.createElement(settings_button_default, {
+        /* @__PURE__ */ import_react31.default.createElement(settings_button_default, {
           configWrapper
         })
       ]
     };
     const Status2 = useStatus_default(status, error);
     if (Status2)
-      return /* @__PURE__ */ import_react28.default.createElement(page_container_default, {
+      return /* @__PURE__ */ import_react31.default.createElement(page_container_default, {
         ...props
       }, Status2);
     const analysis = data;
     const statCards = Object.entries(analysis.analysis).map(([key, value]) => {
-      return /* @__PURE__ */ import_react28.default.createElement(stat_card_default, {
+      return /* @__PURE__ */ import_react31.default.createElement(stat_card_default, {
         label: key,
         value: parseStat(key)(value)
       });
     });
     const artistCards = analysis.artists.contents.slice(0, 10).map((artist) => {
-      return /* @__PURE__ */ import_react28.default.createElement(spotify_card_default, {
+      return /* @__PURE__ */ import_react31.default.createElement(spotify_card_default, {
         type: "artist",
         provider: artist.type,
         uri: artist.uri,
@@ -7443,7 +7465,7 @@ var stats = (() => {
       });
     });
     const albumCards = analysis.albums.contents.slice(0, 10).map((album) => {
-      return /* @__PURE__ */ import_react28.default.createElement(spotify_card_default, {
+      return /* @__PURE__ */ import_react31.default.createElement(spotify_card_default, {
         type: "album",
         provider: album.type,
         uri: album.uri,
@@ -7452,48 +7474,48 @@ var stats = (() => {
         imageUrl: album.image
       });
     });
-    return /* @__PURE__ */ import_react28.default.createElement(page_container_default, {
+    return /* @__PURE__ */ import_react31.default.createElement(page_container_default, {
       ...props
-    }, /* @__PURE__ */ import_react28.default.createElement("section", {
+    }, /* @__PURE__ */ import_react31.default.createElement("section", {
       className: "stats-libraryOverview"
-    }, /* @__PURE__ */ import_react28.default.createElement(stat_card_default, {
+    }, /* @__PURE__ */ import_react31.default.createElement(stat_card_default, {
       label: "Total Playlists",
       value: analysis.playlists
-    }), /* @__PURE__ */ import_react28.default.createElement(stat_card_default, {
+    }), /* @__PURE__ */ import_react31.default.createElement(stat_card_default, {
       label: "Total Tracks",
       value: analysis.length
-    }), /* @__PURE__ */ import_react28.default.createElement(stat_card_default, {
+    }), /* @__PURE__ */ import_react31.default.createElement(stat_card_default, {
       label: "Total Artists",
       value: analysis.artists.length
-    }), /* @__PURE__ */ import_react28.default.createElement(stat_card_default, {
+    }), /* @__PURE__ */ import_react31.default.createElement(stat_card_default, {
       label: "Total Albums",
       value: analysis.albums.length
-    }), /* @__PURE__ */ import_react28.default.createElement(stat_card_default, {
+    }), /* @__PURE__ */ import_react31.default.createElement(stat_card_default, {
       label: "Total Minutes",
       value: Math.floor(analysis.duration / 6e4)
-    }), /* @__PURE__ */ import_react28.default.createElement(stat_card_default, {
+    }), /* @__PURE__ */ import_react31.default.createElement(stat_card_default, {
       label: "Total Hours",
       value: (analysis.duration / 36e5).toFixed(1)
-    })), /* @__PURE__ */ import_react28.default.createElement(shelf_default, {
+    })), /* @__PURE__ */ import_react31.default.createElement(shelf_default, {
       title: "Most Frequent Genres"
-    }, /* @__PURE__ */ import_react28.default.createElement(chart_card_default, {
+    }, /* @__PURE__ */ import_react31.default.createElement(chart_card_default, {
       data: analysis.genres
-    }), /* @__PURE__ */ import_react28.default.createElement("div", {
+    }), /* @__PURE__ */ import_react31.default.createElement("div", {
       className: "main-gridContainer-gridContainer grid"
-    }, statCards)), /* @__PURE__ */ import_react28.default.createElement(shelf_default, {
+    }, statCards)), /* @__PURE__ */ import_react31.default.createElement(shelf_default, {
       title: "Most Frequent Artists"
-    }, /* @__PURE__ */ import_react28.default.createElement(inline_grid_default, null, artistCards)), /* @__PURE__ */ import_react28.default.createElement(shelf_default, {
+    }, /* @__PURE__ */ import_react31.default.createElement(inline_grid_default, null, artistCards)), /* @__PURE__ */ import_react31.default.createElement(shelf_default, {
       title: "Most Frequent Albums"
-    }, /* @__PURE__ */ import_react28.default.createElement(inline_grid_default, null, albumCards)), /* @__PURE__ */ import_react28.default.createElement(shelf_default, {
+    }, /* @__PURE__ */ import_react31.default.createElement(inline_grid_default, null, albumCards)), /* @__PURE__ */ import_react31.default.createElement(shelf_default, {
       title: "Release Year Distribution"
-    }, /* @__PURE__ */ import_react28.default.createElement(chart_card_default, {
+    }, /* @__PURE__ */ import_react31.default.createElement(chart_card_default, {
       data: analysis.releaseYears
     })));
   };
-  var library_default = import_react28.default.memo(LibraryPage);
+  var library_default = import_react31.default.memo(LibraryPage);
 
   // src/pages/top_albums.tsx
-  var import_react29 = __toESM(require_react());
+  var import_react32 = __toESM(require_react());
   var getTopAlbums2 = async (timeRange, config) => {
     const { "lastfm-user": user, "api-key": key } = config;
     if (!user || !key)
@@ -7512,21 +7534,21 @@ var stats = (() => {
       title: "Top Albums",
       headerEls: [
         dropdown,
-        /* @__PURE__ */ import_react29.default.createElement(refresh_button_default, {
+        /* @__PURE__ */ import_react32.default.createElement(refresh_button_default, {
           callback: () => invalidator(["top-albums", activeOption.id], refetch)
         }),
-        /* @__PURE__ */ import_react29.default.createElement(settings_button_default, {
+        /* @__PURE__ */ import_react32.default.createElement(settings_button_default, {
           configWrapper
         })
       ]
     };
     if (Status2)
-      return /* @__PURE__ */ import_react29.default.createElement(page_container_default, {
+      return /* @__PURE__ */ import_react32.default.createElement(page_container_default, {
         ...props
       }, Status2);
     const topAlbums = data;
     const albumCards = topAlbums.map((album, index) => {
-      return /* @__PURE__ */ import_react29.default.createElement(spotify_card_default, {
+      return /* @__PURE__ */ import_react32.default.createElement(spotify_card_default, {
         type: "album",
         provider: album.type,
         uri: album.uri,
@@ -7536,16 +7558,16 @@ var stats = (() => {
         badge: `${index + 1}`
       });
     });
-    return /* @__PURE__ */ import_react29.default.createElement(page_container_default, {
+    return /* @__PURE__ */ import_react32.default.createElement(page_container_default, {
       ...props
-    }, /* @__PURE__ */ import_react29.default.createElement("div", {
+    }, /* @__PURE__ */ import_react32.default.createElement("div", {
       className: "main-gridContainer-gridContainer grid"
     }, albumCards));
   };
-  var top_albums_default = import_react29.default.memo(AlbumsPage);
+  var top_albums_default = import_react32.default.memo(AlbumsPage);
 
   // package.json
-  var version = "1.1.1";
+  var version = "1.1.2";
 
   // src/app.tsx
   var checkForUpdates = (setNewUpdate) => {
@@ -7560,7 +7582,7 @@ var stats = (() => {
     );
   };
   var App = () => {
-    const [config, setConfig] = import_react30.default.useState({
+    const [config, setConfig] = import_react33.default.useState({
       ...SpicetifyStats.ConfigWrapper.Config
     });
     const launchModal = () => {
@@ -7571,22 +7593,22 @@ var stats = (() => {
       launchModal
     };
     const pages = {
-      ["Artists"]: /* @__PURE__ */ import_react30.default.createElement(top_artists_default, {
+      ["Artists"]: /* @__PURE__ */ import_react33.default.createElement(top_artists_default, {
         configWrapper
       }),
-      ["Tracks"]: /* @__PURE__ */ import_react30.default.createElement(top_tracks_default, {
+      ["Tracks"]: /* @__PURE__ */ import_react33.default.createElement(top_tracks_default, {
         configWrapper
       }),
-      ["Albums"]: /* @__PURE__ */ import_react30.default.createElement(top_albums_default, {
+      ["Albums"]: /* @__PURE__ */ import_react33.default.createElement(top_albums_default, {
         configWrapper
       }),
-      ["Genres"]: /* @__PURE__ */ import_react30.default.createElement(top_genres_default, {
+      ["Genres"]: /* @__PURE__ */ import_react33.default.createElement(top_genres_default, {
         configWrapper
       }),
-      ["Library"]: /* @__PURE__ */ import_react30.default.createElement(library_default, {
+      ["Library"]: /* @__PURE__ */ import_react33.default.createElement(library_default, {
         configWrapper
       }),
-      ["Charts"]: /* @__PURE__ */ import_react30.default.createElement(charts_default, {
+      ["Charts"]: /* @__PURE__ */ import_react33.default.createElement(charts_default, {
         configWrapper
       })
     };
@@ -7594,33 +7616,33 @@ var stats = (() => {
       (page) => configWrapper.config[`show-${page.toLowerCase()}`]
     );
     const [navBar, activeLink, setActiveLink] = useNavigationBar_default(tabPages);
-    const [hasPageSwitched, setHasPageSwitched] = import_react30.default.useState(false);
-    const [newUpdate, setNewUpdate] = import_react30.default.useState(false);
-    import_react30.default.useEffect(() => {
+    const [hasPageSwitched, setHasPageSwitched] = import_react33.default.useState(false);
+    const [newUpdate, setNewUpdate] = import_react33.default.useState(false);
+    import_react33.default.useEffect(() => {
       setActiveLink(Spicetify.LocalStorage.get("stats:active-link") || "Artists");
       checkForUpdates(setNewUpdate);
       setHasPageSwitched(true);
     }, []);
-    import_react30.default.useEffect(() => {
+    import_react33.default.useEffect(() => {
       Spicetify.LocalStorage.set("stats:active-link", activeLink);
     }, [activeLink]);
     if (!hasPageSwitched) {
-      return /* @__PURE__ */ import_react30.default.createElement(import_react30.default.Fragment, null);
+      return /* @__PURE__ */ import_react33.default.createElement(import_react33.default.Fragment, null);
     }
-    return /* @__PURE__ */ import_react30.default.createElement("div", {
+    return /* @__PURE__ */ import_react33.default.createElement("div", {
       id: "stats-app"
-    }, navBar, newUpdate && /* @__PURE__ */ import_react30.default.createElement("div", {
+    }, navBar, newUpdate && /* @__PURE__ */ import_react33.default.createElement("div", {
       className: "new-update"
-    }, "New app update available! Visit", " ", /* @__PURE__ */ import_react30.default.createElement("a", {
+    }, "New app update available! Visit", " ", /* @__PURE__ */ import_react33.default.createElement("a", {
       href: "https://github.com/harbassan/spicetify-apps/releases"
     }, "harbassan/spicetify-apps"), " to install."), pages[activeLink]);
   };
   var app_default = App;
 
   // ../../../AppData/Local/Temp/spicetify-creator/index.jsx
-  var import_react31 = __toESM(require_react());
+  var import_react34 = __toESM(require_react());
   function render() {
-    return /* @__PURE__ */ import_react31.default.createElement(app_default, null);
+    return /* @__PURE__ */ import_react34.default.createElement(app_default, null);
   }
   return __toCommonJS(spicetify_creator_exports);
 })();
